@@ -93,7 +93,8 @@ const webpackProductionConfig = {
 	mode: 'production',
 	output: {
 		path: path.resolve( __dirname, '../assets/js' ),
-		filename: '[name].js'
+		filename: '[name].js',
+		libraryTarget: 'this'
 	},
 	entry: {},
 	resolve: {
