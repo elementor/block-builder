@@ -1,23 +1,16 @@
 import { ElementorPreviewIFrame } from './components/preview-frame';
+import { ElementorIcon } from './components/elementor-icon';
 
 import { __ } from '@wordpress/i18n';
-import { createElement } from '@wordpress/element';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
 import { SelectControl } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
-// Elementor SVG icon
-const ElementorIcon = createElement( 'svg', { width: 20, height: 20, viewBox: '0 0 448 512' },
-	createElement( 'path', {
-		d: 'M425.6 32H22.4C10 32 0 42 0 54.4v403.2C0 470 10 480 22.4 480h403.2c12.4 0 22.4-10 22.4-22.4V54.4C448 42 438 32 425.6 32M164.3 355.5h-39.8v-199h39.8v199zm159.3 0H204.1v-39.8h119.5v39.8zm0-79.6H204.1v-39.8h119.5v39.8zm0-79.7H204.1v-39.8h119.5v39.8z',
-	} )
-);
-
 registerBlockType( 'elementor/template', {
-	title: __( 'Elementor Template', 'elementor' ),
+	title: __( 'Elementor Template', 'block-builder' ),
 	icon: ElementorIcon,
-	category: 'common', //'elementor'
+	category: 'common', //'block-builder
 	attributes: {
 		selectedTemplate: {
 			type: 'number',
@@ -37,17 +30,17 @@ registerBlockType( 'elementor/template', {
 		};
 	} )( ( props ) => {
 		if ( ! props.templates ) {
-			return __( 'Loading', 'elementor' );
+			return __( 'Loading', 'block-builder' );
 		}
 
 		if ( 0 === props.templates.length ) {
-			return __( 'No templates Found', 'elementor' );
+			return __( 'No templates Found', 'block-builder' );
 		}
 
 		const template = props.attributes.selectedTemplate,
 			templates = [ {
 				value: 0,
-				label: __( 'Select a Template', 'elementor' ),
+				label: __( 'Select a Template', 'block-builder' ),
 			} ],
 			className = props.className;
 		let editWithElementor = '',
@@ -77,7 +70,7 @@ registerBlockType( 'elementor/template', {
 						className={ 'elementor-edit-link button button-primary button-large' }
 						target={ '_blank' }
 						href={ '/wp-admin/post.php?post=' + p.id + '&action=elementor' }>
-						{ __( 'Edit Template with Elementor', 'elementor' ) }
+						{ __( 'Edit Template with Elementor', 'block-builder' ) }
 					</a> );
 
 					display = (
@@ -96,7 +89,7 @@ registerBlockType( 'elementor/template', {
 		if ( '' === display ) {
 			display = (
 				<div>
-					{ __( 'No Template Selected', 'elementor' ) }
+					{ __( 'No Template Selected', 'block-builder' ) }
 					{ templateSelectControl }
 				</div>
 			);

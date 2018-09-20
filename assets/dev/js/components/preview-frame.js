@@ -12,7 +12,7 @@ export class ElementorPreviewIFrame extends React.Component {
 			transform: 'scale( ' + this.state.transformScale + ' )',
 		};
 
-		return <div key={ key } ref={ ( nodeElement ) => {
+		return <div ref={ ( nodeElement ) => {
 			this.nodeElement = nodeElement;
 		} }>
 			<iframe src={ this.props.srcDoc }
@@ -22,7 +22,7 @@ export class ElementorPreviewIFrame extends React.Component {
 				height={ this.state.iFrameHeight }
 				style={ styleScale }
 				onLoad={ () => setTimeout( () => {
-					const element = this.props.nodeElement,
+					const element = this.nodeElement,
 						previewFrame = element.children[ 0 ],
 						overlay = element.children[ 1 ],
 						blockContainer = element.parentElement,

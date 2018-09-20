@@ -1,4 +1,5 @@
-const ExtractText = require( 'extract-text-webpack-plugin' );
+//const ExtractText = require( 'extract-text-webpack-plugin' );
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 const debug = process.env.NODE_ENV !== 'production';
 const path = require( 'path' );
@@ -28,7 +29,7 @@ const wpDependencies = [
 	'compose',
 ];
 
-wpDependencies.forEach( wpDependency => {
+wpDependencies.forEach( ( wpDependency ) => {
 	externals[ '@wordpress/' + wpDependency ] = {
 		this: [ 'wp', wpDependency ],
 	};
@@ -82,8 +83,7 @@ const moduleRules = {
 };
 
 const entryPoints = {
-	'template-block': __dirname + '/assets/dev/js/template-block.js',
-	'template-block.min': __dirname + '/assets/dev/js/template-block.js',
+	'template-block': path.resolve( __dirname, './assets/dev/js/template-block.js' ),
 };
 
 module.exports = {
@@ -91,11 +91,12 @@ module.exports = {
 	devtool: debug ? 'inline-sourcemap' : null,
 	mode: debug ? 'development' : 'production',
 	entry: entryPoints,
+	externals,
 	output: {
 		path: path.resolve( __dirname, './assets/js' ),
 		filename: '[name].js',
+		library: [ 'wp', '[name]' ],
 	},
 	module: moduleRules,
-	externals,
 	//plugins: plugins,
 };

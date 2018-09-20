@@ -5,7 +5,7 @@ const sass = {
 		},
 		files: [ {
 			expand: true,
-			cwd: 'assets/dev/scss/direction',
+			cwd: 'assets/dev/scss',
 			src: '*.scss',
 			dest: 'assets/css',
 			ext: '.css'

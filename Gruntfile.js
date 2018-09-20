@@ -62,42 +62,11 @@ module.exports = function( grunt ) {
 
 		if ( ! isDevMode ) {
 			grunt.task.run( 'postcss' );
-			grunt.task.run( 'css_templates' );
 		}
 	} );
 
 	grunt.registerTask( 'watch_styles', () => {
 		grunt.task.run( 'watch:styles' );
-	} );
-
-	grunt.registerTask( 'css_templates', () => {
-		grunt.task.run( 'css_templates_proxy:templates' );
-
-		grunt.config( 'sass.dist', {
-			files: [ {
-				expand: true,
-				cwd: 'assets/dev/scss/direction',
-				src: [ 'frontend.scss', 'frontend-rtl.scss' ],
-				dest: 'assets/css/templates',
-				ext: '.css',
-			} ],
-		} );
-
-		grunt.task.run( 'sass' );
-
-		grunt.config( 'postcss.minify.files.0.src', [
-			'assets/css/templates/*.css',
-			'!assets/css/templates/*.min.css',
-		] );
-
-		grunt.task.run( 'postcss:minify' );
-
-		grunt.task.run( 'css_templates_proxy:values' );
-	} );
-
-	// Writing the proxy file as a grunt task, in order to fit in with the tasks queue
-	grunt.registerTask( 'css_templates_proxy', ( mode ) => {
-		fs.writeFileSync( 'assets/dev/scss/frontend/breakpoints/proxy.scss', '@import "' + mode + '";' );
 	} );
 
 	grunt.registerTask( 'build', [
