@@ -19,7 +19,6 @@
 
 	iframe {
 		width: 1170px;
-		overflow: hidden;
 		transform-origin: top left;
 	}
 
@@ -32,5 +31,9 @@
 		height: 0;
 		z-index: 9999;
 		user-select: none;
+	}
+
+	.elementor-preview-wrapper {
+		height: inherit;
 	}
 }
