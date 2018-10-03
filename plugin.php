@@ -116,6 +116,10 @@ class Plugin {
 		}
 	}
 
+	public static function elementor() {
+		return \Elementor\Plugin::$instance;
+	}
+
 	/**
 	 *  Plugin class constructor
 	 *

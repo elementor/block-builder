@@ -1,7 +1,7 @@
 <?php
 namespace ElementorBlockBuilder\Blocks;
 
-use Elementor\Plugin;
+use ElementorBlockBuilder\Plugin;
 use Elementor\TemplateLibrary\Source_Local;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -85,7 +85,7 @@ class Template_Block {
 
 	public function elementor_template_block_render( $attributes ) {
 		if ( isset( $attributes['selectedTemplate'] ) ) {
-			return Plugin::$instance->frontend->get_builder_content( $attributes['selectedTemplate'], true );
+			Plugin::instance()->elementor()->frontend->get_builder_content( $attributes['selectedTemplate'], true );
 		}
 	}
 
