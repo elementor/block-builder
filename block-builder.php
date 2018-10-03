@@ -79,6 +79,12 @@ final class Elementor_Block_Builder {
 	 * @access public
 	 */
 	public function init() {
+		// Check for required PHP version
+		if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
+			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_php_version' ) );
+			return;
+		}
+
 		// Check if Gutenberg installed and activated
 		if ( ! $this->is_gutenberg_active() ) {
 			add_action( 'admin_notices', array( $this, 'admin_notice_missing_gutenberg_plugin' ) );
@@ -99,6 +105,30 @@ final class Elementor_Block_Builder {
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
 		require_once( 'plugin.php' );
+	}
+
+	/**
+	 * Admin notice
+	 *
+	 * Warning when the site doesn't have Minimum Required PHP version.
+	 * @access public
+	 */
+	public function admin_notice_minimum_php_version() {
+
+		if ( isset( $_GET['activate'] ) ) {
+			unset( $_GET['activate'] );
+		}
+
+		$message = sprintf(
+			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'block-builder' ),
+			'<strong>' . esc_html__( 'Block Builder', 'block-builder' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'block-builder' ) . '</strong>',
+			self::MINIMUM_PHP_VERSION
+		);
+
+		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
+
 	}
 
 	/**
