@@ -42,7 +42,7 @@ const copy = {
 	secondary: {
 		src: getBuildFiles,
 		expand: true,
-		dest: '/tmp/elementor-builds/<%= pkg.version %>/'
+		dest: '/tmp/block-builder-builds/<%= pkg.version %>/'
 	}
 };
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Block Builder
  * Description: Build your Gutenberg Block using Elementor
- * Plugin URI:  https://elementor.com/
+ * Plugin URI:  https://wordpress.org/plugins/block-builder/
  * Version:     0.0.1
  * Author:      Elementor
  * Author URI:  https://elementor.com/
