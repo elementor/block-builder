@@ -91,7 +91,7 @@ class Template_Block {
 
 	public function elementor_template_block_render( $attributes ) {
 		if ( isset( $attributes['selectedTemplate'] ) ) {
-			Plugin::$instance->elementor()->frontend->get_builder_content( $attributes['selectedTemplate'], true );
+			return Plugin::elementor()->frontend->get_builder_content( $attributes['selectedTemplate'], true );
 		}
 	}
 
