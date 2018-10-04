@@ -1,7 +1,7 @@
 === Block Builder ===
 Contributors: elemntor
 Tags: Gutenberg, Block
-Requires at least: 4.7
+Requires at least: 4.9
 Tested up to: 4.9
 Requires PHP: 5.4
 Stable tag: 0.0.1
