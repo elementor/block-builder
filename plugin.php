@@ -18,7 +18,7 @@ class Plugin {
 	 *
 	 * @var Plugin The single instance of the class.
 	 */
-	private static $_instance = null;
+	public static $instance = null;
 
 	/**
 	 * Blocks
@@ -44,10 +44,11 @@ class Plugin {
 	 * @return Plugin An instance of the class.
 	 */
 	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
-		return self::$_instance;
+
+		return self::$instance;
 	}
 
 	private function add_block( $block ) {
@@ -58,6 +59,7 @@ class Plugin {
 		if ( isset( $this->blocks[ $block ] ) ) {
 			return $this->blocks[ $block ];
 		}
+
 		return $this->blocks;
 	}
 
@@ -77,7 +79,8 @@ class Plugin {
 	}
 
 	public function register_blocks() {
-		include_once( BLOCK_BUILDER_PATH . '/blocks/template-block.php' );
+		include_once BLOCK_BUILDER_PATH . '/blocks/template-block.php';
+
 		$this->add_block( new Blocks\Template_Block() );
 	}
 
@@ -107,7 +110,7 @@ class Plugin {
 			$filename = BLOCK_BUILDER_PATH . $filename . '.php';
 
 			if ( is_readable( $filename ) ) {
-				include( $filename );
+				include $filename;
 			}
 		}
 
@@ -129,6 +132,7 @@ class Plugin {
 	 */
 	public function __construct() {
 		spl_autoload_register( [ $this, 'autoload' ] );
+
 		add_filter( 'template_include', [ $this, 'template_include' ], 12 /* After WooCommerce & Elementor Pro - Locations Manager */ );
 		add_action( 'init', [ $this, 'register_blocks' ] );
 	}

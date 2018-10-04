@@ -7,29 +7,29 @@ const path = require( 'path' );
 const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 
 const externals = {
-	react: "React"
+	react: 'React'
 };
 
 const wpDependencies = [
-	"components",
-	"element",
-	"blocks",
-	"utils",
-	"date",
-	"data",
-	"i18n",
-	"editPost",
-	"plugins",
-	"apiRequest",
-	"editor",
-	"compose"
+	'components',
+	'element',
+	'blocks',
+	'utils',
+	'date',
+	'data',
+	'i18n',
+	'editPost',
+	'plugins',
+	'apiRequest',
+	'editor',
+	'compose'
 ];
 
-wpDependencies.forEach(wpDependency => {
-	externals["@wordpress/" + wpDependency] = {
-		this: ["wp", wpDependency]
+wpDependencies.forEach( wpDependency => {
+	externals[ `@wordpress/${wpDependency}` ] = {
+		this: [ 'wp', wpDependency ]
 	};
-});
+} );
 
 const moduleRules = {
 	rules: [
@@ -49,7 +49,7 @@ const moduleRules = {
 				{
 					loader: 'babel-loader',
 					query: {
-						presets: ['@wordpress/default'],
+						presets: [ '@wordpress/default' ],
 						plugins: [
 							[ 'transform-react-jsx', {
 								'pragma': 'wp.element.createElement',
@@ -79,7 +79,7 @@ const webpackConfig = {
 	},
 	externals,
 	resolve: {
-		modules: [__dirname, "node_modules"]
+		modules: [ __dirname, 'node_modules' ]
 	},
 	module: moduleRules,
 	entry: entry,
@@ -98,7 +98,7 @@ const webpackProductionConfig = {
 	},
 	entry: {},
 	resolve: {
-		modules: [__dirname, "node_modules"]
+		modules: [ __dirname, 'node_modules' ]
 	},
 	externals,
 	module: moduleRules,

@@ -1,8 +1,7 @@
 module.exports = function( grunt ) {
 	'use strict';
 
-	const fs = require( 'fs' ),
-		pkgInfo = grunt.file.readJSON( 'package.json' );
+	const pkgInfo = grunt.file.readJSON( 'package.json' );
 
 	require( 'load-grunt-tasks' )( grunt );
 
@@ -18,7 +17,6 @@ module.exports = function( grunt ) {
 		sass: require( './.grunt-config/sass' ),
 		postcss: require( './.grunt-config/postcss' ),
 		watch: require( './.grunt-config/watch' ),
-		wp_readme_to_markdown: require( './.grunt-config/wp_readme_to_markdown' ),
 		bumpup: require( './.grunt-config/bumpup' ),
 		replace: require( './.grunt-config/replace' ),
 		shell: require( './.grunt-config/shell' ),
@@ -34,7 +32,6 @@ module.exports = function( grunt ) {
 	// Default task(s).
 	grunt.registerTask( 'default', [
 		'i18n',
-		'wp_readme_to_markdown',
 		'scripts',
 		'styles',
 	] );

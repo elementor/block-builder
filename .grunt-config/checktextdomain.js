@@ -1,7 +1,7 @@
 const checkTextDomain = {
 	standard: {
 		options:{
-			text_domain: 'elementor',
+			text_domain: 'block-builder',
 			correct_domain: true,
 			keywords: [
 				// WordPress keywords
@@ -24,7 +24,6 @@ const checkTextDomain = {
 		files: [ {
 			src: [
 				'**/*.php',
-				'!docs/**',
 				'!node_modules/**',
 				'!build/**',
 				'!tests/**',

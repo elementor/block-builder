@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Gutenberg Block For Elementor Template
+ * Plugin Name: Block Builder
  * Description: Build your Gutenberg Block using Elementor
  * Plugin URI:  https://elementor.com/
  * Version:     0.0.1
@@ -10,8 +10,10 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-} // Exit if accessed directly
+	exit; // Exit if accessed directly.
+}
+
+define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '0.0.1-alpha1' );
 
 define( 'BLOCK_BUILDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BLOCK_BUILDER_URL', plugins_url( '/', __FILE__ ) );
@@ -22,11 +24,6 @@ define( 'BLOCK_BUILDER_ASSETS_URL', BLOCK_BUILDER_URL . 'assets/' );
  *
  */
 final class Elementor_Block_Builder {
-	/**
-	 * Plugin Version
-	 * @var string The plugin version.
-	 */
-	const VERSION = '0.0.1';
 
 	/**
 	 * Minimum Elementor Version
@@ -50,6 +47,7 @@ final class Elementor_Block_Builder {
 	public function __construct() {
 		// Load translation
 		add_action( 'init', array( $this, 'i18n' ) );
+
 		// Init Plugin
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
@@ -104,7 +102,7 @@ final class Elementor_Block_Builder {
 		}
 
 		// Once we get here, We have passed all validation checks so we can safely include our plugin
-		require_once( 'plugin.php' );
+		require_once 'plugin.php';
 	}
 
 	/**
@@ -114,7 +112,6 @@ final class Elementor_Block_Builder {
 	 * @access public
 	 */
 	public function admin_notice_minimum_php_version() {
-
 		if ( isset( $_GET['activate'] ) ) {
 			unset( $_GET['activate'] );
 		}
@@ -168,9 +165,7 @@ final class Elementor_Block_Builder {
 		}
 
 		$plugin_utils = $this->get_plugin_action_utils();
-
 		$plugin_utils->get_plugin_missing_notice( __( 'Elementor', 'block-builder' ), 'elementor' );
-
 	}
 
 	/**
@@ -180,9 +175,6 @@ final class Elementor_Block_Builder {
 	 * @access public
 	 */
 	public function admin_notice_minimum_elementor_version() {
-		if ( isset( $_GET['activate'] ) ) {
-			unset( $_GET['activate'] );
-		}
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'block-builder' ),
@@ -195,10 +187,12 @@ final class Elementor_Block_Builder {
 
 	public function get_plugin_action_utils() {
 		static $plugin_utils = null;
+
 		if ( null === $plugin_utils ) {
-			include_once( BLOCK_BUILDER_PATH . '/classes/dependency-installer.php' );
+			include_once BLOCK_BUILDER_PATH . '/classes/dependency-installer.php';
 			$plugin_utils = new Dependency_Installer();
 		}
+
 		return $plugin_utils;
 	}
 
