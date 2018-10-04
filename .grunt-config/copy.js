@@ -5,7 +5,6 @@
 const getBuildFiles = [
 	'**',
 	'!node_modules/**',
-	'!docs/**',
 	'!build/**',
 	'!bin/**',
 	'!.git/**',
@@ -33,9 +32,7 @@ const getBuildFiles = [
 	'!assets/**/*.map',
 	'!*~'
 ];
-/**
- * @type {{main: {src: string[], expand: boolean, dest: string}, secondary: {src: string[], expand: boolean, dest: string}}}
- */
+
 const copy = {
 	main: {
 		src: getBuildFiles,
