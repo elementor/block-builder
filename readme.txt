@@ -1,8 +1,8 @@
 === Block Builder ===
 Contributors: elemntor
 Tags: Gutenberg, Block
-Requires at least: 0.0.1
-Tested up to: 4.9.8
+Requires at least: 4.7
+Tested up to: 4.9
 Requires PHP: 5.4
 Stable tag: 0.0.1
 License: GPLv3
