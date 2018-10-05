@@ -90,9 +90,10 @@ class Template_Block {
 
 		wp_localize_script(
 			'gutenberg-elementor',
-			'elementorBlockBuilderConfig',
+			'gutenbergElementorConfig',
 			[
-				'base_site_url' => home_url(),
+				'edit_url_pattern' => admin_url( 'post.php?action=elementor&post=' ),
+				'preview_url_pattern' => site_url( '?elementor-block=1&p=' ),
 			]
 		);
 	}
