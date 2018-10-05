@@ -69,14 +69,14 @@ registerBlockType( 'elementor/template', {
 					editWithElementor = ( <a
 						className={ 'elementor-edit-link button button-primary button-large' }
 						target={ '_blank' }
-						href={ '/wp-admin/post.php?post=' + p.id + '&action=elementor' }>
+						href={ elementorBlockBuilderConfig.base_site_url + '/wp-admin/post.php?post=' + p.id + '&action=elementor' }>
 						{ __( 'Edit Template with Elementor', 'block-builder' ) }
 					</a> );
 
 					display = (
 						<div id={ 'elementor-template-block-inner-' + p.id } >
 							<ElementorPreviewIFrame
-								srcDoc={ '/?elementor-block=1&p=' + p.id }
+								srcDoc={ elementorBlockBuilderConfig.base_site_url + '/?elementor-block=1&p=' + p.id }
 								id={ 'elementor-template-' + p.id }
 								templateId={ p.id }
 								className={ 'elementor-block-preview-frame' } />

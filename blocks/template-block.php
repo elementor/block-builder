@@ -87,12 +87,22 @@ class Template_Block {
 			'wp.i18n.setLocaleData( ' . wp_json_encode( $locale_data ) . ', \'block-builder\' );',
 			'before'
 		);
+
+		wp_localize_script(
+			'gutenberg-elementor',
+			'elementorBlockBuilderConfig',
+			[
+				'base_site_url' => home_url(),
+			]
+		);
 	}
 
 	public function elementor_template_block_render( $attributes ) {
 		if ( isset( $attributes['selectedTemplate'] ) ) {
 			return Plugin::elementor()->frontend->get_builder_content( $attributes['selectedTemplate'], true );
 		}
+
+		return '';
 	}
 
 	public function __construct() {
