@@ -88,7 +88,7 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<div>
+				<div style={ { height: 'initial' } }>
 					{ __( 'No Template Selected', 'block-builder' ) }
 					{ templateSelectControl }
 				</div>
