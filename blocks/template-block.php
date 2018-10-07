@@ -98,7 +98,7 @@ class Template_Block {
 	}
 
 	public function elementor_template_block_render( $attributes ) {
-		if ( isset( $attributes['selectedTemplate'] ) ) {
+		if ( isset( $attributes['selectedTemplate'] ) && ! is_admin() ) {
 			return Plugin::elementor()->frontend->get_builder_content( $attributes['selectedTemplate'], true );
 		}
 
