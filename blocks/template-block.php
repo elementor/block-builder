@@ -41,7 +41,7 @@ class Template_Block {
 
 		// Register our block script with WordPress
 		wp_register_script(
-			'gutenberg-elementor',
+			'elementor-block-builder',
 			BLOCK_BUILDER_ASSETS_URL . 'js/template-block' . $suffix . '.js',
 			[
 				'wp-blocks',
@@ -52,7 +52,7 @@ class Template_Block {
 		);
 
 		wp_register_style(
-			'gutenberg-elementor',
+			'elementor-block-builder',
 			BLOCK_BUILDER_ASSETS_URL . 'css/template-block' . $suffix . '.css',
 			[],
 			ELEMENTOR_BLOCK_BUILDER_VERSION
@@ -62,8 +62,8 @@ class Template_Block {
 			'elementor/' . $this->get_name(),
 			[
 				'render_callback' => [ $this, 'elementor_template_block_render' ],
-				'editor_script' => 'gutenberg-elementor',
-				'editor_style' => 'gutenberg-elementor',
+				'editor_script' => 'elementor-block-builder',
+				'editor_style' => 'elementor-block-builder',
 			]
 		);
 
@@ -83,16 +83,17 @@ class Template_Block {
 		];
 
 		wp_add_inline_script(
-			'gutenberg-elementor',
+			'elementor-block-builder',
 			'wp.i18n.setLocaleData( ' . wp_json_encode( $locale_data ) . ', \'block-builder\' );',
 			'before'
 		);
 
 		wp_localize_script(
-			'gutenberg-elementor',
+			'elementor-block-builder',
 			'elementorBlockBuilderConfig',
 			[
-				'base_site_url' => home_url(),
+				'edit_url_pattern' => admin_url( 'post.php?action=elementor&post=' ),
+				'preview_url_pattern' => site_url( '?elementor-block=1&p=' ),
 			]
 		);
 	}
