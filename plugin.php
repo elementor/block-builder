@@ -72,6 +72,8 @@ class Plugin {
 	public function template_include( $template ) {
 		if ( isset( $_REQUEST['elementor-block'] ) && User::is_current_user_can_edit() ) {
 			add_filter( 'show_admin_bar', '__return_false' );
+			//Compatibility for some Themes
+			remove_action( 'wp_head', '_admin_bar_bump_cb' );
 			return ELEMENTOR_PATH . 'modules/page-templates/templates/canvas.php';
 		}
 
