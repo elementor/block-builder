@@ -60,7 +60,7 @@ registerBlockType( 'elementor/template', {
 		const template = props.attributes.selectedTemplate,
 			templates = [ {
 				value: 0,
-				label: __( 'Select a Template', 'block-builder' ),
+				label: '— ' + __( 'Select a Template', 'block-builder' ) + ' —',
 			} ],
 			className = props.className;
 
@@ -111,8 +111,8 @@ registerBlockType( 'elementor/template', {
 			display = (
 				<Placeholder
 					icon={ ElementorIcon.prototype.render() }
-					label={ __( 'Elementor', 'block-builder' ) }
-					instructions={ __( 'My instructions text', 'block-builder' ) }
+					label={ __( 'Elementor Library', 'block-builder' ) }
+					instructions={ __( 'Select a template from your library or create a new one.', 'block-builder' ) }
 				>
 					{ templateSelectControl }
 				</Placeholder>
