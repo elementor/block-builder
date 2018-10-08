@@ -15,6 +15,22 @@
 		.elementor-block-inner-no-template {
 			max-height: content-box;
 		}
+
+		.components-placeholder__label {
+
+			svg {
+				width: 64px;
+				height: 64px;
+			}
+		}
+
+		.components-placeholder__fieldset {
+
+			h2 {
+				width: 100%;
+				margin-top: 0;
+			}
+		}
 	}
 
 	iframe {
