@@ -4,11 +4,11 @@ import { ElementorIcon } from './components/elementor-icon';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { Placeholder, PanelBody, SelectControl, Button } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 registerBlockType( 'elementor/template', {
-	title: __( 'Elementor Template', 'block-builder' ),
+	title: __( 'Elementor', 'block-builder' ),
 	icon: ElementorIcon,
 	description: __( 'Build your Gutenberg Blocks using Elementor', 'block-builder' ),
 	category: 'common', //'block-builder
@@ -51,7 +51,7 @@ registerBlockType( 'elementor/template', {
 		const template = props.attributes.selectedTemplate,
 			templates = [ {
 				value: 0,
-				label: '— ' + __( 'Select', 'block-builder' ) + ' —',
+				label: __( 'Select a Template', 'block-builder' ),
 			} ],
 			className = props.className;
 		let editWithElementor = '',
@@ -99,16 +99,16 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<div style={ { height: 'initial' } }>
-					{ __( 'Choose Template', 'block-builder' ) }
+				<Placeholder icon={ ElementorIcon.prototype.render() } label="">
+					<h2>{ __( 'Elementor', 'block-builder' ) }</h2>
 					{ templateSelectControl }
-				</div>
+				</Placeholder>
 			);
 		}
 
 		const inspectorPanel = (
 			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Template Settings', 'block-builder' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Elementor Settings', 'block-builder' ) } initialOpen={ true }>
 					{ templateSelectControl }
 					{ editWithElementor }
 				</PanelBody>
