@@ -2,6 +2,7 @@
 namespace ElementorBlockBuilder\Blocks;
 
 use ElementorBlockBuilder\Plugin;
+use Elementor\Utils;
 use Elementor\TemplateLibrary\Source_Local;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -75,11 +76,14 @@ class Template_Block {
 			],
 			'Elementor Template' => [ __( 'Elementor Template', 'block-builder' ) ],
 			'Edit Template with Elementor' => [ __( 'Edit Template with Elementor', 'block-builder' ) ],
-			'Selected Elementor Template' => [ __( 'Selected Elementor Template', 'block-builder' ) ],
+			'Choose Template' => [ __( 'Selected Elementor Template', 'block-builder' ) ],
 			'No Template Selected' => [ __( 'No Template Selected', 'block-builder' ) ],
-			'Select a Template' => [ __( 'Select a Template', 'block-builder' ) ],
-			'No templates Found' => [ __( 'No templates Found', 'block-builder' ) ],
+			'Select' => [ __( 'Select', 'block-builder' ) ],
+			'No Templates Found!' => [ __( 'No Templates Found!', 'block-builder' ) ],
 			'loading' => [ __( 'loading', 'block-builder' ) ],
+			'Create Your First Template' => [ __( 'Create Your First Template', 'block-builder' ) ],
+			'Template Settings' => [ __( 'Template Settings', 'block-builder' ) ],
+			'Build your Gutenberg Blocks using Elementor' => [ __( 'Build your Gutenberg Blocks using Elementor', 'block-builder' ) ],
 		];
 
 		wp_add_inline_script(
@@ -94,6 +98,7 @@ class Template_Block {
 			[
 				'edit_url_pattern' => admin_url( 'post.php?action=elementor&post=' ),
 				'preview_url_pattern' => site_url( '?elementor-block=1&p=' ),
+				'create_first_url' => add_query_arg( [ 'template_type' => 'section' ], Utils::get_create_new_post_url( Source_Local::CPT ) ),
 			]
 		);
 	}
