@@ -4,12 +4,13 @@ import { ElementorIcon } from './components/elementor-icon';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
-import { SelectControl } from '@wordpress/components';
+import { PanelBody, SelectControl } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 registerBlockType( 'elementor/template', {
 	title: __( 'Elementor Template', 'block-builder' ),
 	icon: ElementorIcon,
+	description: __( 'Build your Gutenberg Blocks using Elementor', 'block-builder' ),
 	category: 'common', //'block-builder
 	attributes: {
 		selectedTemplate: {
@@ -34,13 +35,23 @@ registerBlockType( 'elementor/template', {
 		}
 
 		if ( 0 === props.templates.length ) {
-			return __( 'No templates Found', 'block-builder' );
+			return ( <div
+				className={ 'no-templates' }>
+				<p>{ __( 'No Templates Found!', 'block-builder' ) } { ' ' }
+					<a
+						className={ 'elementor-edit-link' }
+						target={ '_blank' }
+						href={ elementorBlockBuilderConfig.create_first_url }>
+						{ __( 'Create Your First Template', 'block-builder' ) }
+					</a>
+				</p>
+			</div> );
 		}
 
 		const template = props.attributes.selectedTemplate,
 			templates = [ {
 				value: 0,
-				label: __( 'Select a Template', 'block-builder' ),
+				label: '— ' + __( 'Select', 'block-builder' ) + ' —',
 			} ],
 			className = props.className;
 		let editWithElementor = '',
@@ -67,7 +78,7 @@ registerBlockType( 'elementor/template', {
 					} );
 
 					editWithElementor = ( <a
-						className={ 'elementor-edit-link button button-primary button-large' }
+						className={ 'elementor-edit-link button button-secondary' }
 						target={ '_blank' }
 						href={ elementorBlockBuilderConfig.edit_url_pattern + p.id }>
 						{ __( 'Edit Template with Elementor', 'block-builder' ) }
@@ -89,7 +100,7 @@ registerBlockType( 'elementor/template', {
 		if ( '' === display ) {
 			display = (
 				<div style={ { height: 'initial' } }>
-					{ __( 'No Template Selected', 'block-builder' ) }
+					{ __( 'Choose Template', 'block-builder' ) }
 					{ templateSelectControl }
 				</div>
 			);
@@ -97,8 +108,10 @@ registerBlockType( 'elementor/template', {
 
 		const inspectorPanel = (
 			<InspectorControls key="inspector">
-				{ templateSelectControl }
-				{ editWithElementor }
+				<PanelBody title={ __( 'Template Settings', 'block-builder' ) } initialOpen={ true }>
+					{ templateSelectControl }
+					{ editWithElementor }
+				</PanelBody>
 			</InspectorControls>
 		);
 
