@@ -4,7 +4,7 @@ import { ElementorIcon } from './components/elementor-icon';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
-import { Placeholder, PanelBody, SelectControl, Button } from '@wordpress/components';
+import { Placeholder, PanelBody, SelectControl } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
 
 registerBlockType( 'elementor/template', {
@@ -31,7 +31,16 @@ registerBlockType( 'elementor/template', {
 		};
 	} )( ( props ) => {
 		if ( ! props.templates ) {
-			return __( 'Loading', 'block-builder' );
+			return (
+				<div className={ props.className }>
+					<Placeholder
+						icon={ ElementorIcon.prototype.render() }
+						lable={ __( 'Elementor', 'block-builder' ) }
+						instructions={ __( 'Loading..', 'block-builder' ) }
+					>
+					</Placeholder>
+				</div>
+			);
 		}
 
 		if ( 0 === props.templates.length ) {
@@ -54,6 +63,7 @@ registerBlockType( 'elementor/template', {
 				label: __( 'Select a Template', 'block-builder' ),
 			} ],
 			className = props.className;
+
 		let editWithElementor = '',
 			display = '';
 
@@ -99,8 +109,11 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<Placeholder icon={ ElementorIcon.prototype.render() } label="">
-					<h2>{ __( 'Elementor', 'block-builder' ) }</h2>
+				<Placeholder
+					icon={ ElementorIcon.prototype.render() }
+					label={ __( 'Elementor', 'block-builder' ) }
+					instructions={ __( 'My instructions text', 'block-builder' ) }
+				>
 					{ templateSelectControl }
 				</Placeholder>
 			);
