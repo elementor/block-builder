@@ -9,7 +9,7 @@ export class ElementorPlaceholder extends Component {
 		return (
 			<Placeholder
 				icon={ ElementorIcon.prototype.render() }
-				lable={ __( 'Elementor', 'block-builder' ) }
+				label={ __( 'Elementor Library', 'block-builder' ) }
 				{ ...this.props }
 			/>
 		);
