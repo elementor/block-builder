@@ -3,6 +3,7 @@ import { Component } from '@wordpress/element';
 export class ElementorPreviewIFrame extends Component {
 	constructor() {
 		super();
+
 		this.state = {
 			iFrameHeight: '0px',
 			transformScale: 1,

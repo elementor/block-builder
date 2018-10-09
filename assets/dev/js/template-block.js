@@ -1,12 +1,15 @@
-import { ElementorPreviewIFrame } from './components/preview-frame';
-import { ElementorIcon } from './components/elementor-icon';
-
-import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
+import {
+	Button,
+	PanelBody,
+	SelectControl,
+} from '@wordpress/components';
 
+import { ElementorPreviewIFrame } from './components/preview-frame';
+import { ElementorIcon } from './components/elementor-icon';
 import { ElementorPlaceholder } from './components/placeholder';
 
 registerBlockType( 'elementor/template', {
@@ -36,27 +39,26 @@ registerBlockType( 'elementor/template', {
 		if ( ! props.templates ) {
 			return (
 				<div className={ props.className }>
-					<ElementorPlaceholder
-						instructions={ __( 'Loading..', 'block-builder' ) }
-					>
+					<ElementorPlaceholder>
+						{ __( 'Loading..', 'block-builder' ) }
 					</ElementorPlaceholder>
 				</div>
 			);
 		}
 
 		if ( 0 === props.templates.length ) {
-			return ( <div className={ props.className }>
-				<ElementorPlaceholder
-					instructions={ __( 'No Templates Found!', 'block-builder' ) }
-				>
-					<a
-						className={ 'elementor-edit-link' }
-						target={ '_blank' }
-						href={ elementorBlockBuilderConfig.create_first_url }>
-						{ __( 'Create Your First Template', 'block-builder' ) }
-					</a>
-				</ElementorPlaceholder>
-			</div> );
+			return (
+				<div className={ props.className }>
+					<ElementorPlaceholder>
+						<Button
+							isDefault
+							target="_blank"
+							href={ elementorBlockBuilderConfig.create_new_post_url }>
+							{ __( 'Create Your First Template', 'block-builder' ) }
+						</Button>
+					</ElementorPlaceholder>
+				</div>
+			);
 		}
 
 		const template = props.attributes.selectedTemplate,
@@ -73,7 +75,8 @@ registerBlockType( 'elementor/template', {
 			<SelectControl
 				value={ props.attributes.selectedTemplate }
 				onChange={ ( value ) => props.setAttributes( { selectedTemplate: parseInt( value ) } ) }
-				options={ templates } />
+				options={ templates }
+			/>
 		);
 
 		if ( props.templates.length > 0 ) {
@@ -89,20 +92,26 @@ registerBlockType( 'elementor/template', {
 						title: p.title.rendered,
 					} );
 
-					editWithElementor = ( <a
-						className={ 'elementor-edit-link button button-secondary' }
-						target={ '_blank' }
-						href={ elementorBlockBuilderConfig.edit_url_pattern + p.id }>
-						{ __( 'Edit Template with Elementor', 'block-builder' ) }
-					</a> );
+					editWithElementor = (
+						<Button
+							isDefault
+							target={ '_blank' }
+							href={ elementorBlockBuilderConfig.edit_url_pattern + p.id }
+						>
+							{ __( 'Edit Template with Elementor', 'block-builder' ) }
+						</Button>
+					);
 
 					display = (
-						<div id={ 'elementor-template-block-inner-' + p.id } >
+						<div
+							id={ 'elementor-template-block-inner-' + p.id }
+						>
 							<ElementorPreviewIFrame
 								srcDoc={ elementorBlockBuilderConfig.preview_url_pattern + p.id }
 								id={ 'elementor-template-' + p.id }
 								templateId={ p.id }
-								className={ 'elementor-block-preview-frame' } />
+								className={ 'elementor-block-preview-frame' }
+							/>
 						</div>
 					);
 				}
@@ -111,9 +120,7 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<ElementorPlaceholder
-					instructions={ __( 'Select a template from your library or create a new one.', 'block-builder' ) }
-				>
+				<ElementorPlaceholder>
 					{ templateSelectControl }
 				</ElementorPlaceholder>
 			);

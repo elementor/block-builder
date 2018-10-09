@@ -10,6 +10,7 @@ export class ElementorPlaceholder extends Component {
 			<Placeholder
 				icon={ ElementorIcon.prototype.render() }
 				label={ __( 'Elementor Library', 'block-builder' ) }
+				instructions={ __( 'Select a template from your library or create a new one.', 'block-builder' ) }
 				{ ...this.props }
 			/>
 		);
