@@ -4,14 +4,16 @@ import { ElementorIcon } from './components/elementor-icon';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
-import { Placeholder, PanelBody, SelectControl } from '@wordpress/components';
+import { PanelBody, SelectControl } from '@wordpress/components';
 import { withSelect } from '@wordpress/data';
+
+import { ElementorPlaceholder } from './components/placeholder';
 
 registerBlockType( 'elementor/template', {
 	title: __( 'Elementor', 'block-builder' ),
 	icon: ElementorIcon,
 	description: __( 'Build your Gutenberg Blocks using Elementor', 'block-builder' ),
-	category: 'common', //'block-builder
+	category: 'common',
 	attributes: {
 		selectedTemplate: {
 			type: 'number',
@@ -26,6 +28,7 @@ registerBlockType( 'elementor/template', {
 	// Defines the block within the editor.
 	edit: withSelect( ( select ) => {
 		const { getEntityRecords } = select( 'core' );
+
 		return {
 			templates: getEntityRecords( 'postType', 'elementor_library', { per_page: 100 } ),
 		};
@@ -33,27 +36,26 @@ registerBlockType( 'elementor/template', {
 		if ( ! props.templates ) {
 			return (
 				<div className={ props.className }>
-					<Placeholder
-						icon={ ElementorIcon.prototype.render() }
-						lable={ __( 'Elementor', 'block-builder' ) }
+					<ElementorPlaceholder
 						instructions={ __( 'Loading..', 'block-builder' ) }
 					>
-					</Placeholder>
+					</ElementorPlaceholder>
 				</div>
 			);
 		}
 
 		if ( 0 === props.templates.length ) {
-			return ( <div
-				className={ 'no-templates' }>
-				<p>{ __( 'No Templates Found!', 'block-builder' ) } { ' ' }
+			return ( <div className={ props.className }>
+				<ElementorPlaceholder
+					instructions={ __( 'No Templates Found!', 'block-builder' ) }
+				>
 					<a
 						className={ 'elementor-edit-link' }
 						target={ '_blank' }
 						href={ elementorBlockBuilderConfig.create_first_url }>
 						{ __( 'Create Your First Template', 'block-builder' ) }
 					</a>
-				</p>
+				</ElementorPlaceholder>
 			</div> );
 		}
 
@@ -109,13 +111,12 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<Placeholder
-					icon={ ElementorIcon.prototype.render() }
+				<ElementorPlaceholder
 					label={ __( 'Elementor', 'block-builder' ) }
 					instructions={ __( 'My instructions text', 'block-builder' ) }
 				>
 					{ templateSelectControl }
-				</Placeholder>
+				</ElementorPlaceholder>
 			);
 		}
 

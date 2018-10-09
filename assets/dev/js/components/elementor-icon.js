@@ -1,4 +1,6 @@
-export class ElementorIcon extends React.Component {
+import { Component } from '@wordpress/element';
+
+export class ElementorIcon extends Component {
 	render() {
 		return <svg
 			viewBox={ '0 0 448 512' }>

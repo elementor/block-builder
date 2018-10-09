@@ -1,4 +1,6 @@
-export class ElementorPreviewIFrame extends React.Component {
+import { Component } from '@wordpress/element';
+
+export class ElementorPreviewIFrame extends Component {
 	constructor() {
 		super();
 		this.state = {
