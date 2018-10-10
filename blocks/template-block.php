@@ -31,7 +31,7 @@ class Template_Block {
 			array(
 				array(
 					'slug' => 'elementor',
-					'title' => __( 'Elementor', 'block-builder' ),
+					'title' => __( 'Elementor Library', 'block-builder' ),
 				),
 			)
 		);
