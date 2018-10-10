@@ -83,7 +83,7 @@ class Template_Block {
 			'loading' => [ __( 'loading', 'block-builder' ) ],
 			'Create Your First Template' => [ __( 'Create Your First Template', 'block-builder' ) ],
 			'Template Settings' => [ __( 'Template Settings', 'block-builder' ) ],
-			'Build your Gutenberg Blocks using Elementor' => [ __( 'Build your Gutenberg Blocks using Elementor', 'block-builder' ) ],
+			'Embed Elementor blocks and templates inside Gutenberg' => [ __( 'Embed Elementor blocks and templates inside Gutenberg', 'block-builder' ) ],
 		];
 
 		wp_add_inline_script(

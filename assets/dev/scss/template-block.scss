@@ -51,3 +51,14 @@
 		overflow: hidden;
 	}
 }
+
+// RTl Compatibility
+body.rtl {
+
+	.editor-block-list__block[data-type="elementor/template"] {
+
+		iframe {
+			transform-origin: top right;
+		}
+	}
+}
