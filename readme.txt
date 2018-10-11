@@ -1,4 +1,4 @@
-=== Block Builder ===
+=== Elementor Block for Gutenberg ===
 Contributors: elemntor
 Tags: Gutenberg, Block
 Requires at least: 4.9

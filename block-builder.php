@@ -119,7 +119,7 @@ final class Elementor_Block_Builder {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'block-builder' ),
-			'<strong>' . esc_html__( 'Block Builder', 'block-builder' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor Block for Gutenberg', 'block-builder' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'block-builder' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
