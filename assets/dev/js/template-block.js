@@ -36,11 +36,12 @@ registerBlockType( 'elementor/template', {
 			templates: getEntityRecords( 'postType', 'elementor_library', { per_page: 100 } ),
 		};
 	} )( ( props ) => {
+		const previewFrameRef = React.createRef();
 		if ( ! props.templates ) {
 			return (
 				<div className={ props.className }>
 					<ElementorPlaceholder>
-						{ __( 'Loading..', 'block-builder' ) }
+						{ __( 'Loading...', 'block-builder' ) }
 					</ElementorPlaceholder>
 				</div>
 			);
@@ -61,8 +62,7 @@ registerBlockType( 'elementor/template', {
 			);
 		}
 
-		const template = props.attributes.selectedTemplate,
-			templates = [ {
+		const templates = [ {
 				value: 0,
 				label: '— ' + __( 'Select a Template', 'block-builder' ) + ' —',
 			} ],
@@ -86,11 +86,11 @@ registerBlockType( 'elementor/template', {
 					value: p.id,
 				} );
 
-				if ( template === p.id ) {
-					props.setAttributes( {
-						selectedTemplate: parseInt( p.id ),
-						title: p.title.rendered,
-					} );
+				if ( props.attributes.selectedTemplate === p.id ) {
+					// props.setAttributes( {
+					// 	selectedTemplate: parseInt( p.id ),
+					// 	title: p.title.rendered,
+					// } );
 
 					editWithElementor = (
 						<Button
@@ -107,10 +107,12 @@ registerBlockType( 'elementor/template', {
 							id={ 'elementor-template-block-inner-' + p.id }
 						>
 							<ElementorPreviewIFrame
+								ref={ previewFrameRef }
 								srcDoc={ elementorBlockBuilderConfig.preview_url_pattern + p.id }
 								id={ 'elementor-template-' + p.id }
 								templateId={ p.id }
 								className={ 'elementor-block-preview-frame' }
+								iFrameDisplay={ false }
 							/>
 						</div>
 					);
@@ -120,7 +122,7 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<ElementorPlaceholder>
+				<ElementorPlaceholder withLink>
 					{ templateSelectControl }
 				</ElementorPlaceholder>
 			);
