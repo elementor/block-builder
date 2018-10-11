@@ -178,7 +178,7 @@ final class Elementor_Block_Builder {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
 			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'block-builder' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'block-builder' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor Block for Gutenberg', 'block-builder' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'block-builder' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
