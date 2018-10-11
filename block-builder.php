@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Elementor Block for Gutenberg
  * Description: Embed Elementor blocks and templates inside Gutenberg
- * Plugin URI:  https://wordpress.org/plugins/block-builder/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
+ * Plugin URI:  https://elementor.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Version:     0.0.1
  * Author:      Elementor
  * Author URI:  https://elementor.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
