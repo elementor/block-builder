@@ -1,4 +1,6 @@
 import { Component } from '@wordpress/element';
+import { Spinner } from '@wordpress/components';
+import { ElementorPlaceholder } from './placeholder';
 
 export class ElementorPreviewIFrame extends Component {
 	constructor() {
@@ -6,13 +8,34 @@ export class ElementorPreviewIFrame extends Component {
 
 		this.state = {
 			iFrameHeight: '0px',
+			iFrameDisplay: false,
 			transformScale: 1,
 		};
+	}
+
+	static getDerivedStateFromProps( nextProps, prevState ) {
+		if ( nextProps.srcDoc !== prevState.srcDoc ) {
+			return {
+				srcDoc: nextProps.srcDoc,
+			};
+		}
+		// No state update necessary
+		return null;
+	}
+
+	componentDidUpdate( prevProps ) {
+		if ( prevProps.srcDoc !== this.props.srcDoc ) {
+			this.nodeElement.parentElement.style = 'height: initial';
+			this.setState( {
+				iFrameDisplay: false,
+			} );
+		}
 	}
 
 	render() {
 		const styleScale = {
 			transform: 'scale( ' + this.state.transformScale + ' )',
+			display: this.state.iFrameDisplay ? 'block' : 'none',
 		};
 
 		return <div className="elementor-preview-wrapper" ref={ ( nodeElement ) => {
@@ -28,6 +51,7 @@ export class ElementorPreviewIFrame extends Component {
 					// Set minimum height for better preview
 					this.setState( {
 						iFrameHeight: '1000px',
+						iFrameDisplay: true,
 					} );
 
 					const element = this.nodeElement,
@@ -54,7 +78,20 @@ export class ElementorPreviewIFrame extends Component {
 				}, 550 ) } />
 			<div
 				id={ 'elementor-overlay-' + this.props.templateId }
-				className={ 'elementor-block-preview-overlay' } />
+				className={ 'elementor-block-preview-overlay' }
+				style={ {
+					display: this.state.iFrameDisplay ? 'block' : 'none',
+				} }
+			/>
+			<div
+				id={ 'elementor-preview-loader-' + this.props.templateId }
+				className={ 'elementor-block-preview-loader' }
+				style={ { display: this.state.iFrameDisplay ? 'none' : 'block', minHeight: '200px' } }
+			>
+				<ElementorPlaceholder instructions="" >
+					<Spinner />
+				</ElementorPlaceholder>
+			</div>
 		</div>;
 	}
 }
