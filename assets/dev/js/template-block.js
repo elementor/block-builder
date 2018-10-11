@@ -13,9 +13,9 @@ import { ElementorIcon } from './components/elementor-icon';
 import { ElementorPlaceholder } from './components/placeholder';
 
 registerBlockType( 'elementor/template', {
-	title: __( 'Elementor', 'block-builder' ),
+	title: __( 'Elementor Library', 'block-builder' ),
 	icon: ElementorIcon,
-	description: __( 'Build your Gutenberg Blocks using Elementor', 'block-builder' ),
+	description: __( 'Embed Elementor blocks and templates inside Gutenberg', 'block-builder' ),
 	category: 'common',
 	attributes: {
 		selectedTemplate: {
@@ -128,7 +128,7 @@ registerBlockType( 'elementor/template', {
 
 		const inspectorPanel = (
 			<InspectorControls key="inspector">
-				<PanelBody title={ __( 'Elementor Settings', 'block-builder' ) } initialOpen={ true }>
+				<PanelBody title={ __( 'Settings', 'block-builder' ) } initialOpen={ true }>
 					{ templateSelectControl }
 					{ editWithElementor }
 				</PanelBody>
