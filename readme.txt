@@ -1,6 +1,6 @@
 === Elementor Block for Gutenberg ===
 Contributors: elemntor
-Tags: Gutenberg, Block
+Tags: Gutenberg, Block, Block Builder, Elementor,
 Requires at least: 4.9
 Tested up to: 4.9
 Requires PHP: 5.4
