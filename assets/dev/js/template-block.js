@@ -15,7 +15,7 @@ import { ElementorPlaceholder } from './components/placeholder';
 registerBlockType( 'elementor/template', {
 	title: __( 'Elementor Library', 'block-builder' ),
 	icon: ElementorIcon,
-	description: __( 'Embed Elementor blocks and templates inside Gutenberg', 'block-builder' ),
+	description: __( 'Add Elementor templates to your Gutenberg content.', 'block-builder' ),
 	category: 'common',
 	attributes: {
 		selectedTemplate: {
