@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Elementor Block for Gutenberg
+ * Plugin Name: Elementor Blocks for Gutenberg
  * Description: Embed Elementor blocks and templates inside Gutenberg
  * Plugin URI:  https://elementor.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
- * Version:     0.0.1
+ * Version:     1.0.0
  * Author:      Elementor.com
  * Author URI:  https://elementor.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
  * Text Domain: block-builder
@@ -118,8 +118,8 @@ final class Elementor_Block_Builder {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'block-builder' ),
-			'<strong>' . esc_html__( 'Elementor Block for Gutenberg', 'block-builder' ) . '</strong>',
+			esc_html__( '%1$s requires %2$s version %3$s or greater.', 'block-builder' ),
+			'<strong>' . esc_html__( 'Elementor Blocks for Gutenberg', 'block-builder' ) . '</strong>',
 			'<strong>' . esc_html__( 'PHP', 'block-builder' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
@@ -177,8 +177,8 @@ final class Elementor_Block_Builder {
 	public function admin_notice_minimum_elementor_version() {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'block-builder' ),
-			'<strong>' . esc_html__( 'Elementor Block for Gutenberg', 'block-builder' ) . '</strong>',
+			esc_html__( '%1$s requires %2$s version %3$s or greater.', 'block-builder' ),
+			'<strong>' . esc_html__( 'Elementor Blocks for Gutenberg', 'block-builder' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'block-builder' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);

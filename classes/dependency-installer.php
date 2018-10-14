@@ -108,8 +108,8 @@ class Dependency_Installer {
 
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: missing plugin */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'block-builder' ),
-			'<strong>' . esc_html__( 'Elementor Block', 'block-builder' ) . '</strong>',
+			esc_html__( 'In order to use %1$s, you need to install and activate %2$s first.', 'block-builder' ),
+			'<strong>' . esc_html__( 'Elementor Blocks for Gutenberg', 'block-builder' ) . '</strong>',
 			'<strong>' . $plugin_name . '</strong>'
 		);
 
