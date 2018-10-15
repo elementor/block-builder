@@ -1,11 +1,7 @@
 {
   "name": "block-builder",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Gutenberg Blog to Embed Elementor Template",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --watch"
-  },
   "author": "Elementor Team",
   "devDependencies": {
     "@babel/core": "7.0.0",

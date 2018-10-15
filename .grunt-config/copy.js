@@ -30,6 +30,10 @@ const getBuildFiles = [
 
 	'!assets/dev/**',
 	'!assets/**/*.map',
+
+	'!assets/js/template-block.js',
+	'!assets/css/template-block.css',
+
 	'!*~'
 ];
 

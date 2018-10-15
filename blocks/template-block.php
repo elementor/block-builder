@@ -38,12 +38,10 @@ class Template_Block {
 	}
 
 	public function register_block() {
-		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
 		// Register our block script with WordPress
 		wp_register_script(
 			'elementor-block-builder',
-			BLOCK_BUILDER_ASSETS_URL . 'js/template-block' . $suffix . '.js',
+			BLOCK_BUILDER_ASSETS_URL . 'js/template-block.min.js',
 			[
 				'wp-blocks',
 				'wp-element',
@@ -54,7 +52,7 @@ class Template_Block {
 
 		wp_register_style(
 			'elementor-block-builder',
-			BLOCK_BUILDER_ASSETS_URL . 'css/template-block' . $suffix . '.css',
+			BLOCK_BUILDER_ASSETS_URL . 'css/template-block.min.css',
 			[],
 			ELEMENTOR_BLOCK_BUILDER_VERSION
 		);
