@@ -1,5 +1,5 @@
 === Elementor Blocks for Gutenberg ===
-Contributors: elemntor, KingYes, ariel.k, bainternet
+Contributors: elemntor, KingYes, ariel.k, jzaltzberg, bainternet, mati1000, pojosh
 Tags: Gutenberg, Block, Block Builder, Elementor, Design
 Requires at least: 4.9
 Tested up to: 4.9

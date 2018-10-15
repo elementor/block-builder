@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '0.0.1' );
+define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '1.0.0' );
 
 define( 'BLOCK_BUILDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BLOCK_BUILDER_URL', plugins_url( '/', __FILE__ ) );
