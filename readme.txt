@@ -18,21 +18,20 @@ This plugin is the smartest way to combine Elementor & Gutenberg to incorporate 
 
 Elementor Blocks requires Gutenberg & Elementor to both be active on your site (after Gutenberg merges into WordPress 5, only an Elementor installation will be required).
 
-
 = How to Use Elementor Blocks? =
 
-* Install & Activate Elementor Blocks for Gutenberg
-* In Gutenberg search for ‘Elementor Library’
-* Choose an existing template or create a new one from scratch
-* Done! Now you can see the Elementor template you chose inside Gutenberg
+1. Install & Activate Elementor Blocks for Gutenberg
+1. In Gutenberg search for ‘Elementor Library’
+1. Choose an existing template or create a new one from scratch
+1. Done! Now you can see the Elementor template you chose previewed inside Gutenberg
 
 = Features =
 
-1. Insert Elementor blocks and templates in any area inside Gutenberg
-1. Preview the template right inside the Gutenberg editor
-1. Edit any Elementor template right in the Gutenberg editor
-1. Choose from over 300+ pre-designed blocks & 100+ pre-designed pages
-1. Customize your Elementor blocks with unlimited design options
+* Insert Elementor blocks and templates in any area inside Gutenberg
+* Preview the template right inside the Gutenberg editor
+* Easy access to edit any Elementor template right from Gutenberg editor
+* Choose from over 300+ pre-designed blocks & 100+ pre-designed pages
+* Customize your Elementor blocks with unlimited design options
 
 = Multilingual & RTL Supported =
 We’ve integrated RTL and multi-language support, so you get a translated panel right out of the box, and you can even add more languages by going to: [https://translate.wordpress.org/projects/wp-plugins/block-builder](https://translate.wordpress.org/projects/wp-plugins/block-builder)
@@ -47,14 +46,13 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 * MySQL version 5.6 or greater
 * WordPress Memory limit of 64 MB or greater (128 MB or higher is preferred)
 
-
 = Installation =
 
-* Install using the WordPress built-in Plugin installer, or extract the .zip file and drop the content into the wp-content/plugins/ directory of your WordPress installation
-* Activate the plugin via the ‘Plugins’ menu in WordPress
-* Go to Gutenberg > Add New Block
-* Choose the Elementor Library Block
-* Now you can choose a template from the list inside the content area
+1. Install using the WordPress built-in Plugin installer, or extract the .zip file and drop the content into the wp-content/plugins/ directory of your WordPress installation
+1. Activate the plugin via the ‘Plugins’ menu in WordPress
+1. Go to Gutenberg > Add New Block
+1. Choose the Elementor Library Block
+1. Now you can choose a template from the list inside the content area
 
 == Frequently Asked Questions ==
 
@@ -65,11 +63,11 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 1. Choose an existing template or create a new one from scratch
 1. Done! Now you can see the Elementor template you chose inside Gutenberg
 
-
 == Screenshots ==
 
-* The completed Elementor Library block when inserted into the editor
-* The completed Elementor Library block with a preview
+1. Add Elementor Library block into the Gutenberg
+2. Elementor Library block with a template preview
+3. Adding Elementor Library block into Gutenberg
 
 == Changelog ==
 
