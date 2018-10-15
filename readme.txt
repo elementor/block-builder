@@ -42,7 +42,7 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 * The latest version of the Gutenberg plugin
 * Elementor 2.2.0 or greater
-* PHP version 5.6 or greater (PHP 7.2 or greater is recommended)
+* PHP version 5.4 or greater (PHP 7.2 or greater is recommended)
 * MySQL version 5.6 or greater
 * WordPress Memory limit of 64 MB or greater (128 MB or higher is preferred)
 
