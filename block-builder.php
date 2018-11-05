@@ -197,7 +197,7 @@ final class Elementor_Block_Builder {
 	}
 
 	public function is_gutenberg_active() {
-		return function_exists( 'the_gutenberg_project' );
+		return function_exists( 'register_block_type' );
 	}
 }
 // Instantiate Elementor_Block_Builder.
