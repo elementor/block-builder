@@ -8,12 +8,8 @@ module.exports = {
 				to: 'Version: <%= pkg.version %>'
 			},
 			{
-				from: /ELEMENTOR_VERSION', '.*?'/g,
-				to: 'ELEMENTOR_VERSION\', \'<%= pkg.version %>\''
-			},
-			{
-				from: /ELEMENTOR_PREVIOUS_STABLE_VERSION', '.*?'/g,
-				to: 'ELEMENTOR_PREVIOUS_STABLE_VERSION\', \'<%= grunt.config.get( \'prev_stable_version\' ) %>\''
+				from: /ELEMENTOR_BLOCK_BUILDER_VERSION', '.*?'/g,
+				to: 'ELEMENTOR_BLOCK_BUILDER_VERSION\', \'<%= pkg.version %>\''
 			}
 		]
 	},
