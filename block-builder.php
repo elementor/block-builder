@@ -17,6 +17,7 @@ define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '1.0.1' );
 
 define( 'BLOCK_BUILDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BLOCK_BUILDER_URL', plugins_url( '/', __FILE__ ) );
+define( 'BLOCK_BUILDER_ASSETS_PATH', BLOCK_BUILDER_PATH . 'assets/' );
 define( 'BLOCK_BUILDER_ASSETS_URL', BLOCK_BUILDER_URL . 'assets/' );
 
 /**

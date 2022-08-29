@@ -1,7 +1,4 @@
-import {
-	Component,
-	createElement,
-} from '@wordpress/element';
+import { Component, createElement } from '@wordpress/element';
 import { Placeholder } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -15,16 +12,22 @@ export class ElementorPlaceholder extends Component {
 	}
 
 	render() {
-		const selectString = __( 'Select a template from your library or', 'block-builder' ),
+		const selectString = __(
+				'Select a template from your library or',
+				'block-builder'
+			),
 			createString = __( 'create a new one.', 'block-builder' ),
 			props = { ...this.props };
 
 		let instructions = selectString + ' ' + createString;
 
 		if ( this.props.withLink ) {
-			instructions = createElement( 'div', {},
+			instructions = createElement(
+				'div',
+				{},
 				selectString + ' ',
-				createElement( 'a',
+				createElement(
+					'a',
 					{
 						target: '_blank',
 						href: elementorBlockBuilderConfig.create_new_post_url,
