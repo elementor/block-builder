@@ -4,7 +4,11 @@ const path = require( 'path' );
 module.exports = {
 	...defaultConfig,
 	entry: {
-		'template-block': path.resolve( process.cwd(), 'src/template-block', 'index.js' ),
+		'template-block': path.resolve(
+			process.cwd(),
+			'src/template-block',
+			'index.js'
+		),
 	},
 	output: {
 		...defaultConfig.output,
