@@ -38,23 +38,30 @@ class Template_Block {
 	}
 
 	public function register_block() {
+		$script_asset_path = BLOCK_BUILDER_ASSETS_PATH . 'template-block.asset.php';
+		if ( ! file_exists( $script_asset_path ) ) {
+			throw new \Error( 'You must to run `npm run build`.' );
+		}
+
+		$script_asset = require( $script_asset_path );
+		$js_url = BLOCK_BUILDER_ASSETS_URL . 'template-block.js';
+
 		// Register our block script with WordPress
 		wp_register_script(
 			'elementor-block-builder',
-			BLOCK_BUILDER_ASSETS_URL . 'js/template-block.min.js',
-			[
-				'wp-blocks',
-				'wp-element',
-			],
-			ELEMENTOR_BLOCK_BUILDER_VERSION,
+			$js_url,
+			$script_asset['dependencies'],
+			$script_asset['version'],
 			true
 		);
 
+		$app_css_url = BLOCK_BUILDER_ASSETS_URL . 'template-block.css';
+
 		wp_register_style(
 			'elementor-block-builder',
-			BLOCK_BUILDER_ASSETS_URL . 'css/template-block.min.css',
-			[],
-			ELEMENTOR_BLOCK_BUILDER_VERSION
+			$app_css_url,
+			[ 'wp-components' ],
+			$script_asset['version']
 		);
 
 		register_block_type(
