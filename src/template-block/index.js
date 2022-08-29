@@ -12,6 +12,8 @@ import { ElementorPreviewIFrame } from './components/preview-frame';
 import { ElementorIcon } from './components/elementor-icon';
 import { ElementorPlaceholder } from './components/placeholder';
 
+import './styles.scss';
+
 registerBlockType( 'elementor/template', {
 	title: __( 'Elementor Library', 'block-builder' ),
 	icon: ElementorIcon,
