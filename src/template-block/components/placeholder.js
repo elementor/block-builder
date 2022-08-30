@@ -45,7 +45,7 @@ export class ElementorPlaceholder extends Component {
 
 		return (
 			<Placeholder
-				icon={ <ElementorIcon color={'#93003F'} /> }
+				icon={ <ElementorIcon color={ '#93003F' } /> }
 				label={ __( 'Elementor Library', 'block-builder' ) }
 				instructions={ instructions }
 				{ ...props }

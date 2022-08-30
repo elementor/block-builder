@@ -5,7 +5,7 @@ const ElementorIcon = ( { color } ) => {
 			width="32"
 			height="32"
 			viewBox="0 0 27 27"
-			color={color}
+			color={ color }
 			fill="none"
 		>
 			<path
