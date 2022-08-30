@@ -1,10 +1,10 @@
 === Elementor Blocks for Gutenberg ===
 Contributors: elemntor, KingYes, ariel.k, jzaltzberg, bainternet, mati1000, pojosh
 Tags: Gutenberg, Block, Block Builder, Elementor, Design
-Requires at least: 4.9
+Requires at least: 5.6
 Tested up to: 6.0
-Requires PHP: 5.4
-Stable tag: 1.0.1
+Requires PHP: 7.0
+Stable tag: 1.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,6 +70,12 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 3. Adding Elementor Library block into Gutenberg
 
 == Changelog ==
+
+= 1.0.2 - 2022-08-30 =
+* Tweak: Updated the minimum requirement for PHP v7.0
+* Tweak: Updated the minimum requirement for Elementor v3.5
+* Tweak: Updated the Elementor logo icon
+* Fix: Added compatibility for WordPress v6.0
 
 = 1.0.1 - 2018-11-06 =
 * Tweak: Added compatibility for WordPress v5.0 Beta ([Topic](https://wordpress.org/support/topic/compatibility-with-wordpress-5-0-beta-1/))
