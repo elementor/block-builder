@@ -12,7 +12,10 @@ import './styles.scss';
 
 registerBlockType( 'elementor/template', {
 	title: __( 'Elementor Library', 'block-builder' ),
-	icon: ElementorIcon,
+	icon: {
+		foreground: '#93003F',
+		src: ElementorIcon,
+	},
 	description: __(
 		'Add Elementor templates to your Gutenberg content.',
 		'block-builder'
