@@ -10,31 +10,21 @@ export class ElementorIcon extends Component {
 	}
 
 	render() {
-		const gradId = 'elementorGradient-' + this.createRandomString( 5 );
 		return (
-			<svg viewBox={ '0 0 448 512' }>
-				<defs>
-					<linearGradient
-						id={ gradId }
-						gradientTransform="rotate(150)"
-						x1="0"
-						y1="75%"
-						x2="100%"
-						y2="25%"
-					>
-						<stop offset="0%" stopColor="#ED345D" stopOpacity="1" />
-						<stop
-							offset="100%"
-							stopColor="#362B74"
-							stopOpacity="1"
-						/>
-					</linearGradient>
-				</defs>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="32"
+				height="32"
+				viewBox="0 0 27 27"
+				color="#93003F"
+				fill="none"
 				<path
+					fillRule={ 'evenodd' }
+					clipRule={ 'evenodd' }
+					fill={ 'currentColor' }
 					d={
-						'M425.6 32H22.4C10 32 0 42 0 54.4v403.2C0 470 10 480 22.4 480h403.2c12.4 0 22.4-10 22.4-22.4V54.4C448 42 438 32 425.6 32M164.3 355.5h-39.8v-199h39.8v199zm159.3 0H204.1v-39.8h119.5v39.8zm0-79.6H204.1v-39.8h119.5v39.8zm0-79.7H204.1v-39.8h119.5v39.8z'
+						'M0 13.2084C0 20.4107 5.83624 26.2501 13.0347 26.2501C20.2332 26.2501 26.0695 20.4107 26.0695 13.2084C26.0695 6.00609 20.2332 0.166748 13.0347 0.166748C5.83624 0.166748 0 6.00609 0 13.2084ZM9.77554 7.77424H7.60342V18.6426H9.77554V7.77424ZM11.9477 7.77424H18.4641V9.94753H11.9477V7.77424ZM18.4641 12.1208H11.9477V14.2941H18.4641V12.1208ZM11.9477 16.4693H18.4641V18.6426H11.9477V16.4693Z'
 					}
-					fill={ 'url(#' + gradId + ')' }
 				/>
 			</svg>
 		);
