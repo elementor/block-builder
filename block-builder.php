@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '1.0.1' );
+define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '1.0.2' );
 
 define( 'BLOCK_BUILDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BLOCK_BUILDER_URL', plugins_url( '/', __FILE__ ) );
@@ -31,14 +31,14 @@ final class Elementor_Block_Builder {
 	 *
 	 * @var string Minimum Elementor version required to run the plugin.
 	 */
-	const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
+	const MINIMUM_ELEMENTOR_VERSION = '3.5.0';
 
 	/**
 	 * Minimum PHP Version
 	 *
 	 * @var string Minimum PHP version required to run the plugin.
 	 */
-	const MINIMUM_PHP_VERSION = '5.4';
+	const MINIMUM_PHP_VERSION = '7.0';
 
 	/**
 	 * Constructor

@@ -71,6 +71,11 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 == Changelog ==
 
+= 1.0.2 - 2022-08-30 =
+* Tweak: Added compatibility for WordPress v6.0
+* Tweak: Updated the minimum requirement for PHP v7.0
+* Tweak: Updated the minimum requirement for Elementor v3.5
+
 = 1.0.1 - 2018-11-06 =
 * Tweak: Added compatibility for WordPress v5.0 Beta ([Topic](https://wordpress.org/support/topic/compatibility-with-wordpress-5-0-beta-1/))
 
