@@ -32,7 +32,7 @@ final class Elementor_Block_Builder {
 	 *
 	 * @var string Minimum Elementor version required to run the plugin.
 	 */
-	const MINIMUM_ELEMENTOR_VERSION = '3.5.0';
+	const MINIMUM_ELEMENTOR_VERSION = '3.0.0';
 
 	/**
 	 * Minimum PHP Version

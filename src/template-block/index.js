@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { Button, PanelBody, SelectControl } from '@wordpress/components';
 
 import { ElementorPreviewIFrame } from './components/preview-frame';
-import { ElementorIcon } from './components/elementor-icon';
+import ElementorIcon from './components/elementor-icon';
 import { ElementorPlaceholder } from './components/placeholder';
 
 import './styles.scss';

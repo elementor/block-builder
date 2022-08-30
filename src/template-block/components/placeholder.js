@@ -2,7 +2,7 @@ import { Component, createElement } from '@wordpress/element';
 import { Placeholder } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import { ElementorIcon } from './elementor-icon';
+import ElementorIcon from './elementor-icon';
 
 export class ElementorPlaceholder extends Component {
 	static get defaultProps() {
@@ -45,7 +45,7 @@ export class ElementorPlaceholder extends Component {
 
 		return (
 			<Placeholder
-				icon={ ElementorIcon.prototype.render() }
+				icon={ <ElementorIcon color={'#93003F'} /> }
 				label={ __( 'Elementor Library', 'block-builder' ) }
 				instructions={ instructions }
 				{ ...props }
