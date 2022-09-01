@@ -4,9 +4,9 @@ import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { Button, PanelBody, SelectControl } from '@wordpress/components';
 
-import { ElementorPreviewIFrame } from './components/preview-frame';
+import ElementorPreviewIFrame from './components/preview-frame';
 import ElementorIcon from './components/elementor-icon';
-import { ElementorPlaceholder } from './components/placeholder';
+import ElementorPlaceholder from './components/placeholder';
 
 import './styles.scss';
 
@@ -60,9 +60,7 @@ registerBlockType( 'elementor/template', {
 						<Button
 							isDefault
 							target="_blank"
-							href={
-								elementorBlockBuilderConfig.create_new_post_url
-							}
+							href={ elementorBlockBuilderConfig.create_new_post_url }
 						>
 							{ __(
 								'Create Your First Template',
@@ -108,11 +106,6 @@ registerBlockType( 'elementor/template', {
 				} );
 
 				if ( props.attributes.selectedTemplate === p.id ) {
-					// props.setAttributes( {
-					// 	selectedTemplate: parseInt( p.id ),
-					// 	title: p.title.rendered,
-					// } );
-
 					editWithElementor = (
 						<Button
 							isDefault
@@ -133,10 +126,7 @@ registerBlockType( 'elementor/template', {
 						<div id={ 'elementor-template-block-inner-' + p.id }>
 							<ElementorPreviewIFrame
 								ref={ previewFrameRef }
-								srcDoc={
-									elementorBlockBuilderConfig.preview_url_pattern +
-									p.id
-								}
+								srcDoc={ elementorBlockBuilderConfig.preview_url_pattern + p.id }
 								id={ 'elementor-template-' + p.id }
 								templateId={ p.id }
 								className={ 'elementor-block-preview-frame' }

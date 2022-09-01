@@ -1,118 +1,89 @@
-import { Component } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { Spinner } from '@wordpress/components';
-import { ElementorPlaceholder } from './placeholder';
+import ElementorPlaceholder from './placeholder';
 
-export class ElementorPreviewIFrame extends Component {
-	constructor() {
-		super();
+const ElementorPreviewIFrame = ( { ref, srcDoc, id, templateId,  className, iFrameDisplayProp } ) => {
+	const [ nodeElement, setNodeElement ] = useState( null );
+	const [ iFrameHeight, setIFrameHeight ] = useState( '0px' );
+	const [ iFrameDisplay, setIFrameDisplay ] = useState( iFrameDisplayProp || false );
+	const [ transformScale, setTransformScale ] = useState( 1 );
+	const [ overlayStyle, setOverlayStyle ] = useState( { display: iFrameDisplay ? 'block' : 'none' } );
 
-		this.state = {
-			iFrameHeight: '0px',
-			iFrameDisplay: false,
-			transformScale: 1,
-		};
-	}
-
-	static getDerivedStateFromProps( nextProps, prevState ) {
-		if ( nextProps.srcDoc !== prevState.srcDoc ) {
-			return {
-				srcDoc: nextProps.srcDoc,
-			};
+	useEffect( () => {
+		if ( '' === srcDoc || ! nodeElement?.parentElement ) {
+			return;
 		}
-		// No state update necessary
-		return null;
-	}
+		nodeElement.parentElement.style = 'height: initial';
+		setIFrameDisplay( false );
+	}, [ srcDoc ] );
 
-	componentDidUpdate( prevProps ) {
-		if ( prevProps.srcDoc !== this.props.srcDoc ) {
-			this.nodeElement.parentElement.style = 'height: initial';
-			this.setState( {
-				iFrameDisplay: false,
+	const styleScale = {
+		transform: `scale( ${ transformScale } )`,
+		display: iFrameDisplay ? 'block' : 'none',
+	};
+
+	// re calc transform scale after preview loaded
+	const onIframeLoaded = () => {
+		// Set minimum height for better preview
+		setIFrameHeight( '1000px' );
+		setIFrameDisplay( true );
+		const element = nodeElement,
+			previewFrame = element.children[ 0 ],
+			blockContainer = element.parentElement,
+			relation = blockContainer.offsetWidth / ( wp?.media?.view?.settings?.contentWidth || 1170 );
+
+		if ( previewFrame ) {
+			const newHeight = previewFrame.contentWindow.document.body.scrollHeight,
+				containerHeight = newHeight * relation + 'px';
+
+			// Safari Fix set min height first
+			setIFrameHeight( '10px' );
+
+			setIFrameHeight( newHeight + 'px' );
+			setTransformScale( relation );
+			blockContainer.style = `height: ${ containerHeight }`;
+			setOverlayStyle( {
+				height: containerHeight,
+				top: '-' + ( newHeight + 10 ) + 'px',
+				display: 'block',
 			} );
 		}
-	}
+	};
 
-	render() {
-		const styleScale = {
-			transform: 'scale( ' + this.state.transformScale + ' )',
-			display: this.state.iFrameDisplay ? 'block' : 'none',
-		};
-
-		return (
+	return (
+		<div
+			className="elementor-preview-wrapper"
+			ref={ ( nodeElement ) => {
+				setNodeElement( nodeElement );
+			} }
+		>
+			<iframe
+				src={ srcDoc }
+				scrolling="no"
+				node={ nodeElement }
+				frameBorder={ 0 }
+				height={ iFrameHeight }
+				style={ styleScale }
+				onLoad={ () =>  setTimeout( () => onIframeLoaded(), 550 ) }
+			/>
 			<div
-				className="elementor-preview-wrapper"
-				ref={ ( nodeElement ) => {
-					this.nodeElement = nodeElement;
+				id={ `elementor-overlay-${templateId}` }
+				className={ 'elementor-block-preview-overlay' }
+				style={ overlayStyle }
+			/>
+			<div
+				id={ `elementor-preview-loader-${templateId}` }
+				className={ 'elementor-block-preview-loader' }
+				style={ {
+					display: iFrameDisplay ? 'none' : 'block',
+					minHeight: '200px',
 				} }
 			>
-				<iframe
-					src={ this.props.srcDoc }
-					scrolling="no"
-					node={ this.nodeElement }
-					frameBorder={ 0 }
-					height={ this.state.iFrameHeight }
-					style={ styleScale }
-					onLoad={ () =>
-						setTimeout( () => {
-							// Set minimum height for better preview
-							this.setState( {
-								iFrameHeight: '1000px',
-								iFrameDisplay: true,
-							} );
-
-							const element = this.nodeElement,
-								previewFrame = element.children[ 0 ],
-								overlay = element.children[ 1 ],
-								blockContainer = element.parentElement,
-								relation = blockContainer.offsetWidth / 1170;
-							if ( previewFrame ) {
-								const newHeight =
-										previewFrame.contentWindow.document.body
-											.scrollHeight,
-									containerHeight =
-										newHeight * relation + 'px';
-
-								// Safari Fix set min height first
-								this.setState( {
-									iFrameHeight: '10px',
-								} );
-
-								this.setState( {
-									iFrameHeight: newHeight + 'px',
-									transformScale: relation,
-								} );
-								blockContainer.style =
-									'height: ' + containerHeight;
-								overlay.style =
-									'height: ' +
-									containerHeight +
-									'; top: -' +
-									( newHeight + 10 ) +
-									'px;';
-							}
-						}, 550 )
-					}
-				/>
-				<div
-					id={ 'elementor-overlay-' + this.props.templateId }
-					className={ 'elementor-block-preview-overlay' }
-					style={ {
-						display: this.state.iFrameDisplay ? 'block' : 'none',
-					} }
-				/>
-				<div
-					id={ 'elementor-preview-loader-' + this.props.templateId }
-					className={ 'elementor-block-preview-loader' }
-					style={ {
-						display: this.state.iFrameDisplay ? 'none' : 'block',
-						minHeight: '200px',
-					} }
-				>
-					<ElementorPlaceholder instructions="">
-						<Spinner />
-					</ElementorPlaceholder>
-				</div>
+				<ElementorPlaceholder>
+					<Spinner />
+				</ElementorPlaceholder>
 			</div>
-		);
-	}
+		</div>
+	);
 }
+export default ElementorPreviewIFrame;
