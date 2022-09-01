@@ -1,5 +1,6 @@
 //Gutenberg Block
-.editor-block-list__block[data-type="elementor/template"] {
+.editor-block-list__block[data-type="elementor/template"],
+.block-editor-block-list__block[data-type="elementor/template"] {
 
 	.wp-block-elementor-template {
 
@@ -55,7 +56,8 @@
 // RTL Compatibility
 body.rtl {
 
-	.editor-block-list__block[data-type="elementor/template"] {
+	.editor-block-list__block[data-type="elementor/template"],
+	.block-editor-block-list__block[data-type="elementor/template"] {
 
 		iframe {
 			transform-origin: top right;
