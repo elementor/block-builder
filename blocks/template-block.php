@@ -120,7 +120,7 @@ class Template_Block {
 		add_action( 'init', [ $this, 'register_block' ], 100 );
 		add_action( 'init', [ $this, 'allow_show_in_rest_elementor_templates' ], 250 );
 
-		if( version_compare( $GLOBALS['wp_version'], '5.7', '<' ) ) {
+		if ( version_compare( $GLOBALS['wp_version'], '5.7', '<' ) ) {
 			add_filter( 'block_categories', [ $this, 'register_block_category' ], 10, 2 );
 		} else {
 			add_filter( 'block_categories_all', [ $this, 'register_block_category' ], 10, 2 );
