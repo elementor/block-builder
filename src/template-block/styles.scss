@@ -17,10 +17,34 @@
 			}
 		}
 	}
+	/* Add cover element to contain the preview */
+	.elementor-cover-container {
+		display: inline-block;
+		overflow: hidden;
+		position: relative;
+	}
 
-	iframe {
-		width: 100%;
-		transform-origin: top left;
+	/* This pseudo element masks the iframe, so that mouse wheel scrolling and clicking do not affect the simulated "screenshot" */
+	.elementor-block-preview-cover:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.elementor-block-preview-cover,
+	.elementor-block-preview-cover iframe {
+		width: 1440px; // large screen width
+		height: 900px; // large screen height
+		transform-origin: 0 0;
+	}
+
+	.elementor-block-preview-cover iframe {
+		opacity: 0;
+		transition: all 300ms ease-in-out;
 	}
 
 	.elementor-block-preview-overlay {
@@ -45,7 +69,7 @@ body.rtl {
 
 	.editor-block-list__block[data-type="elementor/template"],
 	.block-editor-block-list__block[data-type="elementor/template"] {
-
+		.elementor-block-preview-cover,
 		iframe {
 			transform-origin: top right;
 		}

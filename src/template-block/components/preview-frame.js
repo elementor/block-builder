@@ -4,49 +4,37 @@ import ElementorPlaceholder from './placeholder';
 
 const ElementorPreviewIFrame = ( { ref, srcDoc, id, templateId,  className, iFrameDisplayProp } ) => {
 	const [ nodeElement, setNodeElement ] = useState( null );
-	const [ iFrameHeight, setIFrameHeight ] = useState( '0px' );
 	const [ iFrameDisplay, setIFrameDisplay ] = useState( iFrameDisplayProp || false );
 	const [ transformScale, setTransformScale ] = useState( 1 );
-	const [ overlayStyle, setOverlayStyle ] = useState( { display: iFrameDisplay ? 'block' : 'none' } );
+	const [ previewHeight, setPreviewHeight ] = useState( '900px' );
 
 	useEffect( () => {
 		if ( '' === srcDoc || ! nodeElement?.parentElement ) {
 			return;
 		}
 		nodeElement.parentElement.style = 'height: initial';
-		setIFrameDisplay( false );
+		// conditionally update if needed
+		if ( iFrameDisplay ) {
+			setIFrameDisplay( false );
+		}
 	}, [ srcDoc ] );
-
-	const styleScale = {
-		transform: `scale( ${ transformScale } )`,
-		display: iFrameDisplay ? 'block' : 'none',
-	};
 
 	// re calc transform scale after preview loaded
 	const onIframeLoaded = () => {
-		// Set minimum height for better preview
-		setIFrameHeight( '1000px' );
 		setIFrameDisplay( true );
 		const element = nodeElement,
-			previewFrame = element.children[ 0 ],
-			blockContainer = element.parentElement,
-			relation = blockContainer.offsetWidth / ( wp?.media?.view?.settings?.contentWidth || 1170 );
+			coverElement = element.children[0].children[0],
+			previewFrame = coverElement.children[0],
+			blockContainer = element.parentElement;
 
 		if ( previewFrame ) {
-			const newHeight = previewFrame.contentWindow.document.body.scrollHeight,
-				containerHeight = newHeight * relation + 'px';
+			const iframeWidth = ( previewFrame.contentWindow?.document?.body?.offsetWidth || 1440 ),
+				relation = blockContainer.offsetWidth / iframeWidth,
+				newHeight = Math.min( previewFrame.contentWindow?.document?.body?.offsetHeight, 900 ),
+				containerHeight = ( newHeight * relation ) + 'px';
 
-			// Safari Fix set min height first
-			setIFrameHeight( '10px' );
-
-			setIFrameHeight( newHeight + 'px' );
 			setTransformScale( relation );
-			blockContainer.style = `height: ${ containerHeight }`;
-			setOverlayStyle( {
-				height: containerHeight,
-				top: '-' + ( newHeight + 10 ) + 'px',
-				display: 'block',
-			} );
+			setPreviewHeight( containerHeight );
 		}
 	};
 
@@ -56,23 +44,36 @@ const ElementorPreviewIFrame = ( { ref, srcDoc, id, templateId,  className, iFra
 			ref={ ( nodeElement ) => {
 				setNodeElement( nodeElement );
 			} }
+			style={ {
+				height: previewHeight,
+			} }
 		>
-			<iframe
-				src={ srcDoc }
-				scrolling="no"
-				node={ nodeElement }
-				frameBorder={ 0 }
-				height={ iFrameHeight }
-				style={ styleScale }
-				onLoad={ () =>  setTimeout( () => onIframeLoaded(), 550 ) }
-			/>
 			<div
-				id={ `elementor-overlay-${templateId}` }
-				className={ 'elementor-block-preview-overlay' }
-				style={ overlayStyle }
-			/>
+				className={ `elementor-cover-container` }
+				style={ { maxWidth: '100%' } }
+			>
+				<div
+					id={ `elementor-cover-${ templateId }` }
+					className={ 'elementor-block-preview-cover' }
+					style={ {
+						transform: `scale(${ transformScale })`,
+						display: iFrameDisplay ? 'block' : 'none',
+					} }
+				>
+					<iframe
+						src={ srcDoc }
+						scrolling="no"
+						node={ nodeElement }
+						frameBorder={ 0 }
+						style={ {
+							opacity: iFrameDisplay ? 1 : 0,
+						} }
+						onLoad={ () =>  setTimeout( () => onIframeLoaded(), 550 ) }
+					/>
+				</div>
+			</div>
 			<div
-				id={ `elementor-preview-loader-${templateId}` }
+				id={ `elementor-preview-loader-${ templateId }` }
 				className={ 'elementor-block-preview-loader' }
 				style={ {
 					display: iFrameDisplay ? 'none' : 'block',
