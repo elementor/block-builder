@@ -175,23 +175,19 @@ registerBlockType( 'elementor/template', {
 					title={ __( 'Settings', 'block-builder' ) }
 					initialOpen={ true }
 				>
-					<fieldset>
-						{ templateSelectControl }
-					</fieldset>
-					<fieldset>
-						<ToggleControl
-							label={ __( 'Hide Preview', 'block-builder' ) }
-							help={
-								hidePreview
-									? __( 'Show Preview', 'block-builder' )
-									: __( 'Hide Preview', 'block-builder' )
-							}
-							checked={ hidePreview }
-							onChange={ () => {
-								setHidePreview( ( state ) => ! state );
-							} }
-						/>
-					</fieldset>
+					{ templateSelectControl }
+					<ToggleControl
+						label={ __( 'Hide Preview', 'block-builder' ) }
+						help={
+							hidePreview
+								? __( 'Show Preview', 'block-builder' )
+								: __( 'Hide Preview', 'block-builder' )
+						}
+						checked={ hidePreview }
+						onChange={ () => {
+							setHidePreview( ( state ) => ! state );
+						} }
+					/>
 					<fieldset>
 						{ editWithElementor }
 					</fieldset>
