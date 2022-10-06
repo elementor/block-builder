@@ -1,8 +1,9 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InspectorControls } from '@wordpress/editor';
+import { InspectorControls } from '@wordpress/block-editor';
+import { useState } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { Button, PanelBody, SelectControl } from '@wordpress/components';
+import { Button, PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
 
 import ElementorPreviewIFrame from './components/preview-frame';
 import ElementorIcon from './components/elementor-icon';
@@ -30,6 +31,10 @@ registerBlockType( 'elementor/template', {
 			type: 'string',
 			default: '',
 		},
+		hidePreview: {
+			type: 'boolean',
+			default: false,
+		}
 	},
 
 	// Defines the block within the editor.
@@ -43,6 +48,7 @@ registerBlockType( 'elementor/template', {
 		};
 	} )( ( props ) => {
 		const previewFrameRef = React.createRef();
+		const [ hidePreview, setHidePreview ] = useState( false );
 		if ( ! props.templates ) {
 			return (
 				<div className={ props.className }>
@@ -88,6 +94,7 @@ registerBlockType( 'elementor/template', {
 
 		const templateSelectControl = (
 			<SelectControl
+				label={ __( 'Template', 'block-editor' ) }
 				value={ props.attributes.selectedTemplate }
 				onChange={ ( value ) =>
 					props.setAttributes( {
@@ -105,26 +112,44 @@ registerBlockType( 'elementor/template', {
 					value: p.id,
 				} );
 
-				if ( props.attributes.selectedTemplate === p.id ) {
-					editWithElementor = (
-						<Button
-							isDefault
-							target={ '_blank' }
-							href={
-								elementorBlockBuilderConfig.edit_url_pattern +
-								p.id
-							}
-						>
-							{ __(
-								'Edit Template with Elementor',
-								'block-builder'
-							) }
-						</Button>
-					);
+				if ( props.attributes.selectedTemplate !== p.id ) {
+					return;
+				}
 
-					display = (
-						<div id={ 'elementor-template-block-inner-' + p.id }>
-							<ElementorPreviewIFrame
+				editWithElementor = (
+					<Button
+						isDefault
+						target={ '_blank' }
+						href={
+							elementorBlockBuilderConfig.edit_url_pattern +
+							p.id
+						}
+					>
+						{ __(
+							'Edit Template with Elementor',
+							'block-builder'
+						) }
+					</Button>
+				);
+
+				display = (
+					<div id={ 'elementor-template-block-inner-' + p.id }>
+						{ hidePreview
+							? <ElementorPlaceholder
+								instructions={ `
+								${ __( 'Preview is hidden', 'block-editor' ) },
+								${ __( 'Selected template:', 'block-editor' )} ${p.title.rendered}.
+								`}>
+								<Button
+									isDefault
+									onClick={ () => {
+										setHidePreview( ( state ) => ! state );
+									} }
+								>
+									{ __( 'Show Preview', 'block-editor' ) }
+								</Button>
+							</ElementorPlaceholder>
+							: <ElementorPreviewIFrame
 								ref={ previewFrameRef }
 								srcDoc={ elementorBlockBuilderConfig.preview_url_pattern + p.id }
 								id={ 'elementor-template-' + p.id }
@@ -132,9 +157,9 @@ registerBlockType( 'elementor/template', {
 								className={ 'elementor-block-preview-frame' }
 								iFrameDisplay={ false }
 							/>
-						</div>
-					);
-				}
+						}
+					</div>
+				);
 			} );
 		}
 
@@ -145,7 +170,6 @@ registerBlockType( 'elementor/template', {
 				</ElementorPlaceholder>
 			);
 		}
-
 		const inspectorPanel = (
 			<InspectorControls key="inspector">
 				<PanelBody
@@ -153,7 +177,21 @@ registerBlockType( 'elementor/template', {
 					initialOpen={ true }
 				>
 					{ templateSelectControl }
-					{ editWithElementor }
+					<ToggleControl
+						label={ __( 'Hide Preview', 'block-builder' ) }
+						help={
+							hidePreview
+								? __( 'Show Preview', 'block-builder' )
+								: __( 'Hide Preview', 'block-builder' )
+						}
+						checked={ hidePreview }
+						onChange={ () => {
+							setHidePreview( ( state ) => ! state );
+						} }
+					/>
+					<fieldset>
+						{ editWithElementor }
+					</fieldset>
 				</PanelBody>
 			</InspectorControls>
 		);
