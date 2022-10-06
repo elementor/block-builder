@@ -71,6 +71,14 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 == Changelog ==
 
+= 1.1.0 - 2022-10-06 =
+* Tweak: Added an option to hide preview
+* Tweak: Updated the minimum requirement for PHP v7.0
+* Tweak: Updated the minimum requirement for Elementor v3.5
+* Tweak: Updated the Elementor logo icon
+* Fix: Added compatibility for WordPress v6.0 by removing ([Topic 1](https://wordpress.org/support/topic/php-error-512/), [Topic 2](https://wordpress.org/support/topic/block_categories-deprecated/))
+* Fix: Preview only the template without header or footer ([Topic](https://wordpress.org/support/topic/how-can-i-diable-the-template-preview-on-backend/))
+
 = 1.0.2 - 2022-09-05 =
 * Tweak: Updated the minimum requirement for PHP v7.0
 * Tweak: Updated the minimum requirement for Elementor v3.5
