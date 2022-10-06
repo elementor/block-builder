@@ -94,6 +94,7 @@ registerBlockType( 'elementor/template', {
 
 		const templateSelectControl = (
 			<SelectControl
+				label={ __( 'Template', 'block-editor' ) }
 				value={ props.attributes.selectedTemplate }
 				onChange={ ( value ) =>
 					props.setAttributes( {
