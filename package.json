@@ -1,6 +1,6 @@
 {
 	"name": "block-builder",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Gutenberg Blog to Embed Elementor Template",
 	"author": "Elementor Team",
 	"scripts": {
