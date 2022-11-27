@@ -4,7 +4,7 @@ Tags: Gutenberg, Block, Block Builder, Elementor, Design
 Requires at least: 5.6
 Tested up to: 6.1
 Requires PHP: 7.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
