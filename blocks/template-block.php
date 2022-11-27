@@ -103,7 +103,7 @@ class Template_Block {
 			[
 				'edit_url_pattern' => admin_url( 'post.php?action=elementor&post=' ),
 				'preview_url_pattern' => site_url( '?elementor-block=1&p=' ),
-				'create_new_post_url' => add_query_arg( [ 'template_type' => 'section' ], Utils::get_create_new_post_url( Source_Local::CPT ) ),
+				'create_new_post_url' => add_query_arg( [ 'template_type' => 'section' ], Plugin::elementor()->documents->get_create_new_post_url( Source_Local::CPT ) ),
 			]
 		);
 	}
