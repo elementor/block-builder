@@ -70,7 +70,7 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 == Changelog ==
 
-= 1.1.1 - 2022-11-27 =
+= 1.1.1 - 2022-11-30 =
 * Fix: Remove deprecated error log by using different method ([Topic](https://wordpress.org/support/topic/debug-log-error-5/))
 
 = 1.1.0 - 2022-10-06 =
