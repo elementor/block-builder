@@ -21,7 +21,6 @@ const ElementorPreviewIFrame = ( { ref, srcDoc, id, templateId,  className, iFra
 
 	// re calc transform scale after preview loaded
 	const onIframeLoaded = () => {
-		debugger;
 		setIFrameDisplay( true );
 		const element = nodeElement,
 			coverElement = element.children[0].children[0],
