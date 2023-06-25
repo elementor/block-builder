@@ -28,9 +28,9 @@ const ElementorPreviewIFrame = ( { ref, srcDoc, id, templateId,  className, iFra
 			blockContainer = element.parentElement;
 
 		if ( previewFrame ) {
-			const iframeWidth = ( previewFrame.contentWindow?.document?.body?.offsetWidth || 1440 ),
+			const iframeWidth = ( previewFrame.contentDocument?.body?.offsetWidth || 1440 ),
 				relation = blockContainer.offsetWidth / iframeWidth,
-				newHeight = Math.min( previewFrame.contentWindow?.document?.body?.offsetHeight, 900 ),
+				newHeight = Math.min( ( previewFrame.contentDocument?.body?.offsetHeight || 900 ), 900 ),
 				containerHeight = ( newHeight * relation ) + 'px';
 
 			setTransformScale( relation );
