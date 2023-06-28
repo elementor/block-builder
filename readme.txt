@@ -70,6 +70,9 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 == Changelog ==
 
+= 1.1.2 - 2023-06-28 =
+* Fix: The template preview doesn't appear in some edge cases
+
 = 1.1.1 - 2022-11-30 =
 * Fix: Remove deprecated error log by using different method ([Topic](https://wordpress.org/support/topic/debug-log-error-5/))
 
