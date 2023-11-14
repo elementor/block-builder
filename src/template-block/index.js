@@ -49,6 +49,8 @@ registerBlockType( 'elementor/template', {
 	} )( ( props ) => {
 		const previewFrameRef = React.createRef();
 		const [ hidePreview, setHidePreview ] = useState( false );
+		const selectString = __( 'Select a template from your library or', 'block-builder' ) + ' ',
+			createString = __( 'create a new one.', 'block-builder' );
 		if ( ! props.templates ) {
 			return (
 				<div className={ props.className }>
@@ -165,8 +167,19 @@ registerBlockType( 'elementor/template', {
 
 		if ( '' === display ) {
 			display = (
-				<ElementorPlaceholder withLink>
-					{ templateSelectControl }
+				<ElementorPlaceholder>
+					<div>
+						<p>
+							{ selectString }
+							<a
+								target={ '_blank' }
+								href={ elementorBlockBuilderConfig.create_new_post_url }
+							>
+								{ createString }
+							</a>
+						</p>
+						{ templateSelectControl }
+					</div>
 				</ElementorPlaceholder>
 			);
 		}
