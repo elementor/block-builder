@@ -38,23 +38,30 @@ class Template_Block {
 	}
 
 	public function register_block() {
+		$script_asset_path = BLOCK_BUILDER_ASSETS_PATH . 'template-block.asset.php';
+		if ( ! file_exists( $script_asset_path ) ) {
+			throw new \Error( 'You must to run `npm run build`.' );
+		}
+
+		$script_asset = require( $script_asset_path );
+		$js_url = BLOCK_BUILDER_ASSETS_URL . 'template-block.js';
+
 		// Register our block script with WordPress
 		wp_register_script(
 			'elementor-block-builder',
-			BLOCK_BUILDER_ASSETS_URL . 'js/template-block.min.js',
-			[
-				'wp-blocks',
-				'wp-element',
-			],
-			ELEMENTOR_BLOCK_BUILDER_VERSION,
+			$js_url,
+			$script_asset['dependencies'],
+			$script_asset['version'],
 			true
 		);
 
+		$app_css_url = BLOCK_BUILDER_ASSETS_URL . 'template-block.css';
+
 		wp_register_style(
 			'elementor-block-builder',
-			BLOCK_BUILDER_ASSETS_URL . 'css/template-block.min.css',
-			[],
-			ELEMENTOR_BLOCK_BUILDER_VERSION
+			$app_css_url,
+			[ 'wp-components' ],
+			$script_asset['version']
 		);
 
 		register_block_type(
@@ -96,7 +103,7 @@ class Template_Block {
 			[
 				'edit_url_pattern' => admin_url( 'post.php?action=elementor&post=' ),
 				'preview_url_pattern' => site_url( '?elementor-block=1&p=' ),
-				'create_new_post_url' => add_query_arg( [ 'template_type' => 'section' ], Utils::get_create_new_post_url( Source_Local::CPT ) ),
+				'create_new_post_url' => add_query_arg( [ 'template_type' => 'section' ], Plugin::elementor()->documents->get_create_new_post_url( Source_Local::CPT ) ),
 			]
 		);
 	}
@@ -113,7 +120,7 @@ class Template_Block {
 		add_action( 'init', [ $this, 'register_block' ], 100 );
 		add_action( 'init', [ $this, 'allow_show_in_rest_elementor_templates' ], 250 );
 
-		if( version_compare( $GLOBALS['wp_version'], '5.7', '<' ) ) {
+		if ( version_compare( $GLOBALS['wp_version'], '5.7', '<' ) ) {
 			add_filter( 'block_categories', [ $this, 'register_block_category' ], 10, 2 );
 		} else {
 			add_filter( 'block_categories_all', [ $this, 'register_block_category' ], 10, 2 );

@@ -1,10 +1,10 @@
 === Elementor Blocks for Gutenberg ===
-Contributors: elemntor, KingYes, ariel.k, jzaltzberg, bainternet, mati1000, pojosh
+Contributors: elemntor
 Tags: Gutenberg, Block, Block Builder, Elementor, Design
-Requires at least: 4.9
-Tested up to: 6.0
-Requires PHP: 5.4
-Stable tag: 1.0.1
+Requires at least: 5.6
+Tested up to: 6.4
+Requires PHP: 7.0
+Stable tag: 1.1.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -40,9 +40,8 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 = Minimum Requirements =
 
-* The latest version of the Gutenberg plugin
-* Elementor 2.2.0 or greater
-* PHP version 5.4 or greater (PHP 7.2 or greater is recommended)
+* Elementor 3.5.0 or greater
+* PHP version 7.0 or greater (PHP 7.4 or greater is recommended)
 * MySQL version 5.6 or greater
 * WordPress Memory limit of 64 MB or greater (128 MB or higher is preferred)
 
@@ -70,6 +69,23 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 3. Adding Elementor Library block into Gutenberg
 
 == Changelog ==
+
+= 1.1.3 - 2023-11-14 =
+* Fix: Compatibility with WordPress 6.4
+
+= 1.1.2 - 2023-06-28 =
+* Fix: The template preview doesn't appear in some edge cases
+
+= 1.1.1 - 2022-11-30 =
+* Fix: Remove deprecated error log by using different method ([Topic](https://wordpress.org/support/topic/debug-log-error-5/))
+
+= 1.1.0 - 2022-10-06 =
+* Tweak: Added an option to hide preview
+* Tweak: Updated the minimum requirement to PHP v7.0
+* Tweak: Updated the minimum requirement to Elementor v3.5
+* Tweak: Updated the Elementor logo icon
+* Fix: Added compatibility for WordPress v6.0 by removing ([Topic 1](https://wordpress.org/support/topic/php-error-512/), [Topic 2](https://wordpress.org/support/topic/block_categories-deprecated/))
+* Fix: Preview only the template without header or footer ([Topic](https://wordpress.org/support/topic/how-can-i-diable-the-template-preview-on-backend/))
 
 = 1.0.1 - 2018-11-06 =
 * Tweak: Added compatibility for WordPress v5.0 Beta ([Topic](https://wordpress.org/support/topic/compatibility-with-wordpress-5-0-beta-1/))
