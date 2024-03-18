@@ -3,17 +3,19 @@
  * Plugin Name: Elementor Blocks for Gutenberg
  * Description: Embed Elementor templates inside Gutenberg
  * Plugin URI: https://elementor.com/?utm_source=block-builder&utm_campaign=plugin-uri&utm_medium=wp-dash
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: Elementor.com
  * Author URI: https://elementor.com/?utm_source=block-builder&utm_campaign=author-uri&utm_medium=wp-dash
  * Text Domain: block-builder
+ *
+ * Requires Plugins: elementor
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '1.1.3' );
+define( 'ELEMENTOR_BLOCK_BUILDER_VERSION', '1.1.4' );
 
 define( 'BLOCK_BUILDER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BLOCK_BUILDER_URL', plugins_url( '/', __FILE__ ) );
