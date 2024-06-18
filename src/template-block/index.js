@@ -96,7 +96,7 @@ registerBlockType( 'elementor/template', {
 
 		const templateSelectControl = (
 			<SelectControl
-				label={ __( 'Template', 'block-editor' ) }
+				label={ __( 'Template', 'block-builder' ) }
 				value={ props.attributes.selectedTemplate }
 				onChange={ ( value ) =>
 					props.setAttributes( {
@@ -139,8 +139,8 @@ registerBlockType( 'elementor/template', {
 						{ hidePreview
 							? <ElementorPlaceholder
 								instructions={ `
-								${ __( 'Preview is hidden', 'block-editor' ) },
-								${ __( 'Selected template:', 'block-editor' )} ${p.title.rendered}.
+								${ __( 'Preview is hidden', 'block-builder' ) },
+								${ __( 'Selected template:', 'block-builder' )} ${p.title.rendered}.
 								`}>
 								<Button
 									isDefault
@@ -148,7 +148,7 @@ registerBlockType( 'elementor/template', {
 										setHidePreview( ( state ) => ! state );
 									} }
 								>
-									{ __( 'Show Preview', 'block-editor' ) }
+									{ __( 'Show Preview', 'block-builder' ) }
 								</Button>
 							</ElementorPlaceholder>
 							: <ElementorPreviewIFrame
