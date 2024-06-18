@@ -13,7 +13,7 @@ const ElementorPlaceholder = ( props ) => {
 	return (
 		<Placeholder
 			icon={ <ElementorIcon color={ '#93003F' } /> }
-			label={ 'Elementor Library' }
+			label={ __( 'Elementor Library', 'block-builder' ) }
 			instructions={ instructions }
 			{ ...restProps }
 		/>
