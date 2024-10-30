@@ -2,7 +2,7 @@
 Contributors: elemntor
 Tags: Gutenberg, Block, Block Builder, Elementor, Design
 Requires at least: 5.6
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 7.0
 Stable tag: 1.1.4
 License: GPLv3
