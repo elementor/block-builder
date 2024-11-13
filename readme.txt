@@ -55,12 +55,16 @@ We’ve integrated RTL and multi-language support, so you get a translated panel
 
 == Frequently Asked Questions ==
 
-**How to Use Elementor Blocks?**
+= How to Use Elementor Blocks? =
 
 1. Install & Activate Elementor Blocks for Gutenberg
 1. In Gutenberg search for ‘Elementor Library’
 1. Choose an existing template or create a new one from scratch
 1. Done! Now you can see the Elementor template you chose inside Gutenberg
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability](https://patchstack.com/database/vdp/block-builder).
 
 == Screenshots ==
 
