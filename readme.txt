@@ -4,7 +4,7 @@ Tags: Gutenberg, Block, Block Builder, Elementor, Design
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -73,6 +73,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 3. Adding Elementor Library block into Gutenberg
 
 == Changelog ==
+
+= 1.1.5 - 2024-11-26 =
+* Fix: Some strings are not translatable
 
 = 1.1.4 - 2024-03-18 =
 * Tweak: Added Required Plugins header support for Elementor dependencies
